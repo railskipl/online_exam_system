@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :exams
+
   resources :users
 
   devise_for :adminsections
