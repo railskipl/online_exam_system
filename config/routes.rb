@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   
-  resources :users
+  resources :exams
 
-  resources :tests
+  resources :users
 
   devise_for :adminsections
   root 'users#new'
   get '/index'=> 'admins#index'
   get '/add_new_test'=>'admins#add_new_test'
   get '/results'=>'admins#result'
+
+  get '/instruction' => "users#instruction"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
