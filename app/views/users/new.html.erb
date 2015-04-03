@@ -1,0 +1,27 @@
+<%= form_for(@user) do |f| %>
+<fieldset>
+ <div>
+  <%= f.label :FirstName %>
+  <%= f.text_field :firstname %>
+ </div>
+ <div>
+  <%= f.label :LastName %>
+  <%= f.text_field :lastname %></div>
+ <div>
+  <%= f.label :Email %>
+  <%= f.text_field :email %><br />
+ </div>
+ <div>
+  <%= f.label :DateOfBirth %>
+  <%= f.text_field :dob %><br /></div>
+<div>
+  <%= f.label :Conatct_No %>
+  <%= f.text_field :contact %><br />
+</div>
+<div>
+  <%= f.label :Address %>
+  <%= f.text_area :address %><br />
+ </div>
+  <%= f.submit "REGISTER" %>
+ 
+<% end %>
