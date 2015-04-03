@@ -1,7 +1,6 @@
 class AdminsController < ApplicationController
 before_filter :authenticate_adminsection!
 
-
 def index
 		
 	end	
