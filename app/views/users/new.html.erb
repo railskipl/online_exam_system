@@ -1,27 +1,28 @@
 <%= form_for(@user) do |f| %>
-<fieldset>
+<fieldset></br></br>
  <div>
-  <%= f.label :FirstName %>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label "FirstName" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <%= f.text_field :firstname %>
- </div>
+ </div></br>
  <div>
-  <%= f.label :LastName %>
-  <%= f.text_field :lastname %></div>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label "LastName" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= f.text_field :lastname %></div></br>
  <div>
-  <%= f.label :Email %>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label "Email" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <%= f.text_field :email %><br />
- </div>
+ </div></br>
  <div>
-  <%= f.label :DateOfBirth %>
-  <%= f.text_field :dob %><br /></div>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label "Date Of Birth" %> &nbsp;&nbsp;
+  <%= f.text_field :dob %><br />
+  </div></br>
 <div>
-  <%= f.label :Conatct_No %>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label "Conatct No" %> &nbsp;&nbsp;&nbsp;&nbsp;
   <%= f.text_field :contact %><br />
-</div>
+</div></br>
 <div>
-  <%= f.label :Address %>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label "Address" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <%= f.text_area :address %><br />
- </div>
-  <%= f.submit "REGISTER" %>
+ </div></br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.submit "REGISTER" %>
  
 <% end %>
