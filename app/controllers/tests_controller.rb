@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
   before_action :set_test, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_adminsection!
   # GET /tests
   # GET /tests.json
   def index
@@ -15,6 +15,8 @@ class TestsController < ApplicationController
   # GET /tests/new
   def new
     @test = Test.new
+     @question = @test.questions.build
+    @question.answers.build
   end
 
   # GET /tests/1/edit
@@ -69,6 +71,6 @@ class TestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_params
-      params.require(:test).permit(:name)
+      params.require(:test).permit(:name, :questions_attributes => [:id, :test_id, :content, :_destroy, :answers_attributes => [:id, :question_id, :correct_answer, :content, :_destroy]])
     end
 end
