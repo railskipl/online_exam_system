@@ -1,5 +1,36 @@
+<<<<<<< HEAD
+<%= form_for(@user) do |f| %>
+<fieldset></br></br>
+ <div>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label "FirstName" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= f.text_field :firstname %>
+ </div></br>
+ <div>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label "LastName" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= f.text_field :lastname %></div></br>
+ <div>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label "Email" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= f.text_field :email %><br />
+ </div></br>
+ <div>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label "Date Of Birth" %> &nbsp;&nbsp;
+  <%= f.text_field :dob %><br />
+  </div></br>
+<div>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label "Conatct No" %> &nbsp;&nbsp;&nbsp;&nbsp;
+  <%= f.text_field :contact %><br />
+</div></br>
+<div>
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label "Address" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= f.text_area :address %><br />
+ </div></br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.submit "REGISTER" %>
+ 
+<% end %>
+=======
 <%- model_class = User -%>
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
 <%= render :partial => 'form' %>
+>>>>>>> 4574f83de676e2ff9aca7b1a3a92f48cd7e24ef0

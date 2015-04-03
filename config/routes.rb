@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users
 
   devise_for :adminsections
-  root 'admins#index'
+  root 'users#new'
   get '/index'=> 'admins#index'
   get '/add_new_test'=>'admins#add_new_test'
   get '/results'=>'admins#result'

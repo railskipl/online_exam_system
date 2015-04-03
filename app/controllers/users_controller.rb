@@ -14,9 +14,13 @@ else
 end	
 end
 
+<<<<<<< HEAD
+	
+=======
 def instruction
 	
 end
+>>>>>>> 4574f83de676e2ff9aca7b1a3a92f48cd7e24ef0
 
 private
 
