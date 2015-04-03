@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(function (){
+        $('#user_dob').datepicker({
+								    changeMonth: true,
+								    changeYear: true,
+								    selectOtherMonths: true,
+								    yearRange: "1900:2050"
+								});
+});
