@@ -16,7 +16,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'layouts/adminsection' %>
+
+<% if adminsection_signed_in? %>
+  <p>Welcome <%= current_adminsection.email %> | <%= link_to 'Logged In [click to logout]', destroy_adminsection_session_path, :method => :delete %></p>
+  
+<% else %>
+  <p>You are not Logged in. | <%= link_to 'Login', new_adminsection_session_path %></p>
+  
+<% end %>
+
 <%= yield %>
  
 </body>

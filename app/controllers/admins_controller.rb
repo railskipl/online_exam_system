@@ -1,9 +1,11 @@
 class AdminsController < ApplicationController
-before_filter :authenticate_adminsection!
+ before_filter :authenticate_adminsection!
+ 
+
 
 def index
-		
-	end	
+	
+end	
 def add_new_test
 	
 end
