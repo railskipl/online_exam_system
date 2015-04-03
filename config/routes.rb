@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   
   resources :users
 
-  resources :tests
-
   devise_for :adminsections
   root 'admins#index'
   get '/index'=> 'admins#index'
