@@ -1,21 +1,93 @@
-<%= form_for(@test) do |f| %>
-  <% if @test.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@test.errors.count, "error") %> prohibited this test from being saved:</h2>
+<%= nested_form_for @test, :html => { :class => "form-horizontal test" } do |f| %>
 
-      <ul>
-      <% @test.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @test.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@test.errors.count, "error") %> prohibited this test from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @test.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@test[:name]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+<h2>Questions</h2>
+
+      <div id="lesson_questions">
+        <%= f.fields_for :questions do |q_form| %>
+          
+          <div class="form-group">
+            <%= f.label :content, :class => 'control-label col-lg-2' %>
+            <div class="col-lg-10">
+              <%= q_form.text_field :content, :class => 'form-control' %>
+            </div>
+          </div>
+          
+          <hr />
+          <div class="form-group">
+            <label class="control-label col-lg-2"></label>
+            <div class="col-lg-10">
+              <h2>Answers</h2>
+              <div id="question_answers_<%= q_form.options[:child_index] %>">
+                <%= q_form.fields_for :answers do |a_form| %>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2"><%= a_form.check_box :correct_answer %></label>
+                    <div class="col-lg-10">
+                      <%= f.label :correct_answer %>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :content, :class => 'control-label col-lg-2' %>
+                    <div class="col-lg-10">
+                      <%= a_form.text_field :content, :class => 'form-control' %>
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <%= a_form.link_to_remove "Remove", :class => 'btn btn-danger btn-sm' %>
+                    </div>
+                  </div>
+                  <hr />
+                <% end %>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-10">
+                  <%= q_form.link_to_add "Add an answer", :answers, :data => { :target => "#question_answers_#{q_form.options[:child_index]}" }, :class => 'btn btn-primary btn-sm' %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+              <%= q_form.link_to_remove "Remove", :class => 'btn btn-danger' %>
+            </div>
+          </div>
+          <hr />
+        <% end %>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-10">
+          <%= f.link_to_add "Add a question", :questions, :data => { :target => "#lesson_questions" }, :class => 'btn btn-primary btn-sm' %>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            tests_path, :class => 'btn btn-default' %>
+
 <% end %>
