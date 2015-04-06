@@ -6,13 +6,10 @@ Rails.application.routes.draw do
 
   devise_for :adminsections
 
+  get '/papers' => "users#papers", :as => 'papers'
 
+  # get '/instruction' => "users#instruction", :as => 'instruction'
  
-  get '/instruction'  => "users#show" , :as => :exam_test
-# get '/instruction/:id' => "exams#"
-
-get '/instruction' => "users#instruction"
-
   root 'users#new'
   
   get '/index'=> 'admins#index'
