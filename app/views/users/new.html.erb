@@ -26,7 +26,7 @@
  </div></br>
 
   <div>
-<%= f.select(:exam_id, Exam.all.collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' }) %></div><br />
+  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.select(:exam_id, Exam.all.collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' }) %></div><br />
 
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.submit "REGISTER" %>
 

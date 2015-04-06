@@ -23,14 +23,14 @@ def instruction
 end
 
 def papers
+
 	@paper = Exam.find(session[:exam_id]) rescue nil
-	session[:exam_id] = nil
+	#session[:exam_id] = nil
 end
 
 def show
   
 end
-
 
 private
 

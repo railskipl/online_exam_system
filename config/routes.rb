@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   devise_for :adminsections
 
+  resources :userchoices
+
   get '/papers' => "users#papers", :as => 'papers'
 
   # get '/instruction' => "users#instruction", :as => 'instruction'
