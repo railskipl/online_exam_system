@@ -4,7 +4,7 @@
 
   
   <title>OnlineExamSystem</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  
   <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
   
 <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
@@ -17,13 +17,7 @@
 </head>
 <body>
 
-<% if adminsection_signed_in? %>
-  <p>Welcome <%= current_adminsection.email %> | <%= link_to 'Logged In [click to logout]', destroy_adminsection_session_path, :method => :delete %></p>
-  
-<% else %>
-  <p>You are not Logged in. | <%= link_to 'Login', new_adminsection_session_path %></p>
-  
-<% end %>
+
 
 <%= yield %>
  

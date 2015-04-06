@@ -8,8 +8,14 @@ def create
 @user = User.new(user_params)
 
 if @user.save
+
 	@current = @user.exam_id
 	 redirect_to instruction_path
+
+	# @current=@user.exam_id
+ #      raise @current.inspect
+	redirect_to instruction_path(@current)
+
 else
 	render :new
 end	
@@ -23,6 +29,7 @@ end
 def show
 @test = Exam.find(@current)
 end
+
 
 private
 
