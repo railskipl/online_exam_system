@@ -8,21 +8,26 @@ def create
 @user = User.new(user_params)
 
 if @user.save
-	redirect_to instruction_path
+	@current = @user.exam_id
+	 redirect_to instruction_path
 else
 	render :new
 end	
 end
-
+	
 
 def instruction
-	
+	@current = @user.exam_id
+end
+
+def show
+@test = Exam.find(@current)
 end
 
 private
 
 def user_params
-	params.require(:user).permit(:firstname , :lastname, :email ,:dob , :contact , :address)
+	params.require(:user).permit(:firstname , :lastname, :email ,:dob , :contact , :address , :exam_id)
 end
 
 end

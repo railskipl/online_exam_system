@@ -9,5 +9,7 @@ Don't close the window of the test for any reason.</p>
 <p><b>Step 4.</b> When you are satisfied with the result make sure you finish by clicking the SUBMIT button at the bottom of the screen. Click the Submit Button ONLY ONCE!<br />After you submit the test answers, you will receive a score </p>
 <center>
 <div>
- <%= submit_tag "Click To Start Test" %>
+ <%= submit_tag "Click To Start Test", exam_test_path(@current) %>
 </div>
+
+<!-- ,  exam_test_path(@user.exam_id) -->
