@@ -11,10 +11,10 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => 'form-control' %>
+  <div >
+    <%= f.label :name%>
+    <div >
+      <%= f.text_field :name %>
         <h2>Questions</h2>
       <div >
         <%= f.fields_for :questions do |q_form| %>
@@ -51,6 +51,13 @@
           <div>
           
               <%= q_form.link_to_remove "Remove" %>
+              <div class="form-group">
+        <div class="col-lg-10">
+          <%= f.link_to_add "Add a question", :questions, :data => { :target => "#lesson_questions" }, :class => 'btn btn-primary btn-sm' %>
+        </div>
+      </div>
+    </div>
+  </div>
            
           </div>
           <hr />
