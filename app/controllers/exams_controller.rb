@@ -14,9 +14,11 @@ class ExamsController < ApplicationController
 
   # GET /exams/new
   def new
-    @exam = Exam.new
-     @question = @exam.questions.build
-      @question.answers.build
+        @exam = Exam.new
+       1.times do
+            question = @exam.questions.build
+            4.times { question.answers.build }
+              end
   end
 
   # GET /exams/1/edit
