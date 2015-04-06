@@ -11,55 +11,13 @@
     </div>
   <% end %>
 
-
-
-
-  <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => 'form-control' %>
-        <h2>Questions</h2>
-      <div >
-        <%= f.fields_for :questions do |q_form| %>
-          <div >
-            <%= f.label :content%>
-            <%= q_form.text_field :content %>
-           </div>
-          <hr />
-          <div>          
-            <div>
-              <h2>Answers</h2>
-              <div id="question_answers_<%= q_form.options[:child_index] %>">
-                <%= q_form.fields_for :answers do |a_form| %>
-                  <div >
-                    <label ><%= a_form.check_box :correct_answer %></label>                    
-                      <%= f.label :correct_answer %>                   
-                  </div>
-                  <div>
-                    <%= f.label :content %>                    
-                      <%= a_form.text_field :content, :class => 'form-control' %>
-                   </div>              
-               <div >
-                <%= a_form.link_to_remove "Remove", :class => 'btn btn-danger btn-sm' %>
-                    
-                  </div>
-                  <hr />
-                <% end %>
-              </div>
-              <div>
-               <%= q_form.link_to_add "Add an answer", :answers, :data => { :target => "#question_answers_#{q_form.options[:child_index]}" } %>
-               </div>
-            </div>
-          </div>
-          <div>
-          
-              <%= q_form.link_to_remove "Remove" %>
-           
-          </div>
-          <hr />
-        <% end %>
-      </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
   </div>
+  <h2>Questions</h2>
+    <%= f.fields_for :questions %>
+       <%= f.fields_for :questions %>
+<p><%= f.link_to_add "Add a question", :questions %></p>
+<p><%= f.submit "Submit" %></p>
 <% end %>
