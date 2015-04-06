@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
 
  
- # get '/instruction/:id' => "users#show" , :as => :exam_test
+  get '/instruction'  => "users#show" , :as => :exam_test
 # get '/instruction/:id' => "exams#"
 
 get '/instruction' => "users#instruction"
