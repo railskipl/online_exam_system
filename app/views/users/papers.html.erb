@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+ <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
@@ -8,21 +8,44 @@
  
 <%= form_for Userchoice.new do |f| %>
 
+
+<%= nested_form_for Result.new do |f| %>
+
 <ol>
 <% for question in @paper.questions %>
   <li>
-    <%=h question.content %>
+    <%= f.hidden_field :question_id, :value => question.id  %><%= question.content %>
+    <%# for answer in question.answers %>
+    <ul>
     
+
     <% for answer in question.answers %>
     <ul> <%= radio_button_tag("userchoice[#{question.id}]", answer.id) %><%= answer.content %><br/>
 
+<%#= f.radio_button :answer_id, :value => answer.id  %><%#= answer.content %>
+
+
+<%#= f.radio_button "answer_#{answer.id}", answer_id: answer.id , question_id: question.id %>
+<%#= f.radio_button :answer_id, answer.id %>
+ <%#= f.radio_button "userchoice[user_id]", user.id %><%#= answer.content %><br/>
+<%# = radio_button_tag "score_#{goal.id}", goal_id: goal.id, student_id: @student.id %>
 </ul>  
     <% end %>
   
   </li>
-<% end %>
+<%# end %>
 </ol>
+
 
 
    <div><%= f.submit %></div>
 <% end %>
+
+   <div><%= f.submit   %></div>
+<% end %>
+
+
+
+
+
+

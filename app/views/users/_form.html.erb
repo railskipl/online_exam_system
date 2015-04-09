@@ -14,14 +14,16 @@
       </div>
     </div>
   <% end %>
-
- 
+ <div class="control-group">
     <%= f.label :firstname, :class => 'control-label', :size => "10x10" %>
-   
+   <div class="controls">
       <%= f.text_field :firstname, :class => 'form-control' %>
-    
+
+    </div>
     <%= error_span(@user[:firstname]) %>
-  
+  </div>
+
+
   <div class="control-group">
     <%= f.label :lastname, :class => 'control-label' %>
     <div class="controls">
@@ -29,6 +31,9 @@
     </div>
     <%= error_span(@user[:lastname]) %>
   </div>
+
+
+
   <div class="control-group">
     <%= f.label :email, :class => 'control-label' %>
     <div class="controls">
@@ -36,10 +41,13 @@
     </div>
     <%= error_span(@user[:email]) %>
   </div>
-  <div class="control-group">
+
+
+
+  <div >
     <%= f.label :dob, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :dob, :class => 'form-control' %>
+    <div>
+      <%= f.text_field :dob, :autocomplete=>"off",:readonly => true,:class => 'form-control'  %>
     </div>
     <%= error_span(@user[:dob]) %>
   </div>
@@ -56,11 +64,13 @@
       <%= f.text_area :address, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:address]) %>
+  </div> <br />
+  <div class="control-group">
+<%= f.select(:exam_id, Exam.all.collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' }) %> 
+</div><br />
+   <div class="control-group">  
+  <%= f.submit nil, :class => 'btn btn-primary' %>
   </div>
 
-
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            users_path, :class => 'btn btn-default' %>
 
 <% end %>
