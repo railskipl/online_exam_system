@@ -19,10 +19,13 @@
 
 
 $(function (){
+
         $('#user_dob').datepicker({
 								    changeMonth: true,
 								    changeYear: true,
 								    selectOtherMonths: true,
-								    yearRange: "1900:2050"
+								    dateFormat: "dd/mm/yy" ,
+								    yearRange: "1900:2050",
+								     maxDate: '+0d'
 								});
 });
