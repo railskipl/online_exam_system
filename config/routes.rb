@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 # get '/instruction/:id' => "exams#"
 
 get '/instruction/:id' => "users#instruction",:as => 'instruction'
+  post '/results' => "userchoices#score"
+
+
   get '/papers' => "users#papers", :as => 'papers'
 
 
