@@ -6,13 +6,19 @@ Rails.application.routes.draw do
 
   devise_for :adminsections
 
+  resources :userchoices
+
 
  
  # get '/instruction/:id' => "users#show" , :as => :exam_test
 # get '/instruction/:id' => "exams#"
 
 get '/instruction/:id' => "users#instruction",:as => 'instruction'
+  get '/papers' => "users#papers", :as => 'papers'
 
+
+  # get '/instruction' => "users#instruction", :as => 'instruction'
+ 
   root 'users#new'
   
   get '/index'=> 'admins#index'

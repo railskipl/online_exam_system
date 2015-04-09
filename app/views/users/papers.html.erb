@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @paper.name %>
+</p>
+
+ 
+<%= form_for Userchoice.new do |f| %>
+<ol>
+<% for question in @paper.questions %>
+  <li>
+    <%=h question.content %>
+    
+    <% for answer in question.answers %>
+    <ul> <%= radio_button_tag("answer[#{question.id}]", answer.id) %><%= answer.content %><br/>
+
+</ul>  
+    <% end %>
+  
+  </li>
+<% end %>
+</ol>
+
+
+   <div><%= f.submit   %></div>
+<% end %>
