@@ -9,12 +9,13 @@ def create
 
 if @user.save
 
-	@current = @user.exam_id
-	 redirect_to instruction_path
+	 @current = @user.exam_id
 
+	 redirect_to instruction_path(@current)
+        # raise @current.inspect
 	# @current=@user.exam_id
  #      raise @current.inspect
-	redirect_to instruction_path(@current)
+	# redirect_to instruction_path()
 
 else
 	render :new
@@ -23,11 +24,15 @@ end
 	
 
 def instruction
-	@current = @user.exam_id
+
+   
 end
 
 def show
-@test = Exam.find(@current)
+
+end
+def exam
+	
 end
 
 

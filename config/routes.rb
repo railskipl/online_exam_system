@@ -11,7 +11,7 @@ Rails.application.routes.draw do
  # get '/instruction/:id' => "users#show" , :as => :exam_test
 # get '/instruction/:id' => "exams#"
 
-get '/instruction' => "users#instruction"
+get '/instruction/:id' => "users#instruction",:as => 'instruction'
 
   root 'users#new'
   
@@ -22,7 +22,7 @@ get '/instruction' => "users#instruction"
 
   get '/results'=>'admins#result'
 
-  get '/instruction' => "users#instruction"
+   # get '/instruction' => "users#instruction"
 
- 
+  get 'exam/:id'=> 'users#exam',:as => 'exam_test' 
 end
