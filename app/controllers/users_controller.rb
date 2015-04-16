@@ -23,14 +23,44 @@ def instruction
 end
 
 def papers
-
 	@paper = Exam.find(session[:exam_id]) rescue nil
 	#session[:exam_id] = nil
+	# @user = #@paper
+	# @user = Result.new(choice_params)
+	#variant = @paper
+    #@result = Result.new
+    #@result.variant = variant
+   # @questions = Question.find(@paper)
+    #raise @questions.inspect
+    
+
+	# @result = Result.new
+ #    @questions = Question.where (variant: variant)
+ #    @questions.each {|question| quiestion.answers.build}
 end
 
 def show
   
 end
+
+# def score
+
+#  @user = Result.new(choice_params)
+#  @user.save
+ 
+# end
+
+
+# private
+
+# def choice_params
+
+# params.require(:result).permit(:id , :question_id , :answer_id , :userchoice_id )
+
+# #params.require(:result).permit(:id , :question_attributes => [:question_id, :answer_attributes => [:answer_id , :userchoice_attributes => [:userchoice_id]]] )
+
+# end
+
 
 private
 

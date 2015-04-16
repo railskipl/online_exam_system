@@ -15,17 +15,16 @@ class UserchoicesController < ApplicationController
 # end
 
 def create
-
-   @user = params :results.values.collect { |result| Result.new(result) } 
-	 if @results.all?(&:valid?) 
-		@results.each(&:save!)
-       redirect_to :action => ‘index’  
+raise params.inspect
+#    @user = params :results.values.collect { |result| Result.new(result) } 
+# 	 if @results.all?(&:valid?) 
+# 		@results.each(&:save!)
+#        redirect_to :action => ‘index’  
      
-     else render :action => ‘new’
-end 
-
+#      else render :action => ‘new’
+# end 
  #    @user = Result.new(user_params)
- #       raise user_params.inspect
+ #      raise @user.inspect
 	# if @user.save
 	# 	redirect_to users_path
 	# else
@@ -34,21 +33,35 @@ end
 end
 
 def score
-raise user_params.inspect	
+	 
+	user_params["question_id"].each do |i|
+     r = Result.new(user_params)
+     r.question_id = i[0]
+     r.answer_id = i[1]
+     r.save
+	end
+
+	redirect_to :back
+    # @user = Result.new(user_params)
+    
+    # @user.save
+ 
 end
-
-
 
 
 private
 
 def user_params
-	
-	params.require(:result).permit(:id ,:question_id, :answer_id , :userchoice_id )
+
+#params.require(:result).permit(:id , :question_id , :answer_id , :userchoice_id )
+
+params.require(:result).permit!
 
 end
 
-
+ # def exam_params
+ #      params.require(:exam).permit(:name, :questions_attributes => [:id, :exam_id, :content, :_destroy, :answers_attributes => [:id, :question_id, :correct_answer, :content, :_destroy]])
+ #    end
 
 # private 
 

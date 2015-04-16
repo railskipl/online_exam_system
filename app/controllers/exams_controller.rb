@@ -25,13 +25,23 @@ class ExamsController < ApplicationController
   def edit
   end
 
+  # @question = Question.new(question_params)
+  #   @question.quiz_id = @quiz.id
+  #   i = 0
+  #   until question_params[:answers_attributes].count
+  #     @answer = @question.answers.new(question_params[:answers_attributes]["#{i}"])
+  #     @answer.save
+  #     i += 1
+
   # POST /exams
   # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
-
+    
+  #raise exam_params.inspect
+     #if @question.save && Answer.where(question_id: @question.id).where(correct: true).count != 1
     respond_to do |format|
-      if @exam.save
+      if @exam.save #&& Answer.where(exam_id: @question.id).where(correct: true).count != 1
         format.html { redirect_to @exam, notice: 'Exam was successfully created.' }
         format.json { render :show, status: :created, location: @exam }
       else

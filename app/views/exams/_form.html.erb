@@ -1,4 +1,4 @@
-<%= nested_form_for(@exam) do |f| %>
+<%= nested_form_for(@exam)  do |f| %>
   <% if @exam.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@exam.errors.count, "error") %> prohibited this exam from being saved:</h2>
@@ -16,7 +16,7 @@
     <%= f.text_field :name %>
   </div>
   <h2>Questions</h2>
-    <%= f.fields_for :questions %>
+    <%#= f.fields_for :questions  %>
        <%= f.fields_for :questions %>
 <p><%= f.link_to_add "Add a question", :questions %></p>
 <p><%= f.submit "Submit" %></p>
