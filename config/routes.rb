@@ -8,9 +8,17 @@ Rails.application.routes.draw do
 
   resources :userchoices
 
+
+ 
+ # get '/instruction/:id' => "users#show" , :as => :exam_test
+# get '/instruction/:id' => "exams#"
+
+get '/instruction/:id' => "users#instruction",:as => 'instruction'
   post '/results' => "userchoices#score"
 
+
   get '/papers' => "users#papers", :as => 'papers'
+
 
   # get '/instruction' => "users#instruction", :as => 'instruction'
  
@@ -23,7 +31,7 @@ Rails.application.routes.draw do
 
   get '/results'=>'admins#result'
 
-  get '/instruction' => "users#instruction"
+   # get '/instruction' => "users#instruction"
 
- 
+  get 'exam/:id'=> 'users#exam',:as => 'exam_test' 
 end

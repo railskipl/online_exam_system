@@ -6,6 +6,34 @@ def new
 end
 
 def create
+
+@user = User.new(user_params)
+
+if @user.save
+
+	 @current = @user.exam_id
+
+	 redirect_to instruction_path(@current)
+        # raise @current.inspect
+	# @current=@user.exam_id
+ #      raise @current.inspect
+	# redirect_to instruction_path()
+
+else
+	render :new
+end	
+end
+	
+
+def instruction
+
+   
+end
+
+
+def exam
+	
+
     @user = User.new(user_params)
 
 	if @user.save
@@ -25,6 +53,7 @@ end
 def papers
 	@paper = Exam.find(session[:exam_id]) rescue nil
 	#session[:exam_id] = nil
+
 	# @user = #@paper
 	# @user = Result.new(choice_params)
 	#variant = @paper
@@ -37,6 +66,7 @@ def papers
 	# @result = Result.new
  #    @questions = Question.where (variant: variant)
  #    @questions.each {|question| quiestion.answers.build}
+
 end
 
 def show
