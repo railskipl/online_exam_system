@@ -12,6 +12,9 @@ class ExamsController < ApplicationController
   def show
   end
 
+#  @answer = @question.answers.new(question_params[:answers_attributes]["#{i}"])
+#@question.quiz_id = @quiz.id
+ 
   # GET /exams/new
   def new
         @exam = Exam.new
@@ -29,7 +32,7 @@ class ExamsController < ApplicationController
   # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
-
+      #raise exam_params.inspect
     respond_to do |format|
       if @exam.save
         format.html { redirect_to @exam, notice: 'Exam was successfully created.' }

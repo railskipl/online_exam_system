@@ -1,7 +1,7 @@
 class UserchoicesController < ApplicationController
 
  def new
- 	#@user_choice = Userchoice.new
+ 	 #@user = Result.new
  end
 
 # def create
@@ -16,52 +16,53 @@ class UserchoicesController < ApplicationController
 
 def create
 
-	 @user_choices = Userchoice.new(choice_params)
-	 raise @user_choices.inspect
-	 @user_choices.save
+	 # @user_choices = Userchoice.new(choice_params)
+	 # raise @user_choices.inspect
+	 # @user_choices.save
 
-   @user = params :results.values.collect { |result| Result.new(result) } 
-	 if @results.all?(&:valid?) 
-		@results.each(&:save!)
-       redirect_to :action => ‘index’  
+#    @user = params :results.values.collect { |result| Result.new(result) } 
+# 	 if @results.all?(&:valid?) 
+# 		@results.each(&:save!)
+#        redirect_to :action => ‘index’  
      
-     else render :action => ‘new’
-end 
+#      else render :action => ‘new’
+# end 
 
- #    @user = Result.new(user_params)
- #       raise user_params.inspect
-	# if @user.save
-	# 	redirect_to users_path
-	# else
-	# 	render :new
-	# end	
+    @user = Result.new(userresult_params)
+       raise userresult_params.inspect
+	if @user.save
+		redirect_to users_path
+	else
+		render 'new'
+	end	
 end
 
 def score
-raise user_params.inspect	
+ raise userresult_params.inspect	
 end
 
 
 
-  def choice_params
- 	  params.require(:userchoice).permit(:id, :exam_attributes => [:exam_id , :user_attributes => [:user_id, :questions_attributes => [:question_id, :answers_attributes => [:answer_id ]]]])
-  end
+  
 
 
 
 private
 
-def user_params
-	
-	params.require(:result).permit(:id ,:question_id, :answer_id , :userchoice_id )
+def userresult_params
 
+	params.require(:result).permit(:id, :question_id, :answer_id, :userchoice_id)
+end
+
+def choice_params
+ 	params.require(:userchoice).permit(:id, :exam_attributes => [:exam_id , :user_attributes => [:user_id, :questions_attributes => [:question_id, :answers_attributes => [:answer_id ]]]])
 end
 
 
 
 # private 
 
-# def choice_params
+# def choice_params		
 
 #     params.require(:userchoice).permit(:id , :exam_id , :user_id ) 
 #  	#params.require(:userchoice).permit(:id, :exam_attributes => [:exam_id , :user_attributes => [:user_id, :questions_attributes => [:question_id, :answers_attributes => [:answer_id ]]]])

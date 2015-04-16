@@ -6,22 +6,31 @@
 </p>
 
  
-<%= form_for Userchoice.new do |f| %>
+<%#= form_for Userchoice.new do |f| %>
+
+
+
+
 
 
 <%= nested_form_for Result.new do |f| %>
-
+<%# raise "hi" %>
 <ol>
-<% for question in @paper.questions %>
+  <% @paper.questions.each do |ss| %>
+<%# for question in @paper.questions_id %>
   <li>
-    <%= f.hidden_field :question_id, :value => question.id  %><%= question.content %>
+    <%= ss.id %>
+    <%#= ss.hidden_field :id, :value => ss.id %><%= ss.content %>
+    <%# raise ss.id.inspect %>
     <%# for answer in question.answers %>
     <ul>
     
-
-    <% for answer in question.answers %>
-    <ul> <%= radio_button_tag("userchoice[#{question.id}]", answer.id) %><%= answer.content %><br/>
-
+          
+    
+    <% for answer in ss.answers %>
+    <ul> <%= radio_button_tag("userchoice[#{ss.id}]", answer.id) %><%= answer.content %><br/>
+     <%# raise ss.content.inspect %>
+     <%# raise answer.content.inspect %>
 <%#= f.radio_button :answer_id, :value => answer.id  %><%#= answer.content %>
 
 
@@ -31,9 +40,11 @@
 <%# = radio_button_tag "score_#{goal.id}", goal_id: goal.id, student_id: @student.id %>
 </ul>  
     <% end %>
-  
+    <%#raise @local_content.inspect %>
+  <%# raise f.inspect %>
+
   </li>
-<%# end %>
+<% end %>
 </ol>
 
 
@@ -41,11 +52,19 @@
    <div><%= f.submit %></div>
 <% end %>
 
-   <div><%= f.submit   %></div>
-<% end %>
+  
 
 
+<!--  simple_form_for @pack do |pack_form|
+  .pack-product-rows
+    - @pack.pack_contents.each do |pack_content|
+      = f.simple_fields_for :pack_contents, pack_content do |pack_content_fields|
+        = render :partial => 'pack_product_row', :locals => { :pack => @pack, :pack_content => pack_content, :pack_content_fields => pack_content_fields}
+ -->
 
+      
+    
+    
 
 
 

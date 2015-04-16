@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :userchoices
 
   post '/results' => "userchoices#score"
+  # get '/results' => "users#index"
+  
 
   get '/papers' => "users#papers", :as => 'papers'
 
