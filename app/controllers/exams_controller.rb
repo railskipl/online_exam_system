@@ -25,25 +25,23 @@ class ExamsController < ApplicationController
   def edit
   end
 
+  # @question = Question.new(question_params)
+  #   @question.quiz_id = @quiz.id
+  #   i = 0
+  #   until question_params[:answers_attributes].count
+  #     @answer = @question.answers.new(question_params[:answers_attributes]["#{i}"])
+  #     @answer.save
+  #     i += 1
+
   # POST /exams
   # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
-
-  @question = @exam.questions
- #@question = Question.new(question_params)
-    #question.exam_id = @exam.id
- 
-    i = 0
-    #until question_params[:answers_attributes].count
-      until exam_params[:questions_attributes]
-        raise @exam.inspect
-      @answer = @question.answers.new(exam_params[:questions_attributes]["#{i}"])
-      @answer.save
-      i += 1
-    end
+    
+  #raise exam_params.inspect
+     #if @question.save && Answer.where(question_id: @question.id).where(correct: true).count != 1
     respond_to do |format|
-      if @exam.save
+      if @exam.save #&& Answer.where(exam_id: @question.id).where(correct: true).count != 1
         format.html { redirect_to @exam, notice: 'Exam was successfully created.' }
         format.json { render :show, status: :created, location: @exam }
       else
@@ -67,7 +65,6 @@ class ExamsController < ApplicationController
     end
   end
 
-
   # DELETE /exams/1
   # DELETE /exams/1.json
   def destroy
@@ -86,6 +83,6 @@ class ExamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exam_params
-      params.require(:exam).permit(:id ,:name, :questions_attributes => [:id, :exam_id, :content, :answers_attributes => [:id, :question_id, :correct_answer, :content]])
+      params.require(:exam).permit(:name, :questions_attributes => [:id, :exam_id, :content, :_destroy, :answers_attributes => [:id, :question_id, :correct_answer, :content, :_destroy]])
     end
 end
