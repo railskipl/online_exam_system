@@ -2,7 +2,7 @@ class Result < ActiveRecord::Base
 
 has_many   :userchoice
 has_many :question
-#has_many :answer
+has_many :answer
 
 accepts_nested_attributes_for :question
 

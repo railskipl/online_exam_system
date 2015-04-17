@@ -10,10 +10,17 @@
 <ol>
 <% for question in @paper.questions %>
   <li>
-    <%= f.hidden_field :question_id, :value => question.id  %><%= question.content %>
+    <%#= f.hidden_field :question_id, :value => question.id  %><%#= question.content %>
     <%# for answer in question.answers %>
     <ul>
-    
+    <% Question.where(exam_id:  @paper.exam_id).each do |q| %>
+ 
+    <dd><%= q.content %></dd>
+    <dt><i>Answers:</i></dt>
+    <% Answer.where(question_id: q.id).each do |a| %>
+      <dd><%= a.content %>
+<% end %>
+<% end %>
 <%#= f.radio_button :answer_id, :value => answer.id  %><%#= answer.content %>
 
 <%#= f.radio_button "answer_#{answer.id}", answer_id: answer.id , question_id: question.id %>

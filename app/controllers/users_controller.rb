@@ -6,36 +6,6 @@ def new
 end
 
 def create
-
-@user = User.new(user_params)
-
-if @user.save
-
-	 @current = @user.exam_id
-
-	 redirect_to instruction_path(@current)
-        # raise @current.inspect
-	# @current=@user.exam_id
- #      raise @current.inspect
-	# redirect_to instruction_path()
-
-else
-	render :new
-end	
-end
-	
-
-def instruction
-
-   
-end
-
-def show
-
-end
-def exam
-	
-
     @user = User.new(user_params)
 
 	if @user.save
@@ -53,10 +23,8 @@ def instruction
 end
 
 def papers
-
 	@paper = Exam.find(session[:exam_id]) rescue nil
 	#session[:exam_id] = nil
-
 end
 
 def show
