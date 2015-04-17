@@ -8,31 +8,6 @@ def new
 end
 
 def create
-
-@user = User.new(user_params)
-
-if @user.save
-
-	 @current = @user.exam_id
-
-	 redirect_to instruction_path(@current)
-        # raise @current.inspect
-	# @current=@user.exam_id
- #      raise @current.inspect
-	# redirect_to instruction_path()
-
-else
-	render :new
-end	
-end
-	
-
-
-
-
-def exam
-	
-
     @user = User.new(user_params)
 
 	if @user.save
@@ -42,18 +17,41 @@ def exam
 	else
 		render :new
 	end	
-
-    # raise "hi"
- #    @user_result = Result.new(userresult_params)
- #       raise userresult_params.inspect
-	# if @user_result.save
-	# 	redirect_to users_path
-	# else
-	# 	render :new
-	# end	
-	
 end
 	
+
+
+
+
+# def exam
+	
+
+#     @user = User.new(user_params)
+
+# 	if @user.save
+# 		@current = @user.exam_id
+# 		session[:exam_id] = @current
+# 		redirect_to instruction_path
+# 	else
+# 		render :new
+# 	end	
+
+#     # raise "hi"
+#  #    @user_result = Result.new(userresult_params)
+#  #       raise userresult_params.inspect
+# 	# if @user_result.save
+# 	# 	redirect_to users_path
+# 	# else
+# 	# 	render :new
+# 	# end	
+	
+# end
+	
+
+
+
+
+
 
 def instruction 
    #raise session[:exam_id].inspect
@@ -62,7 +60,10 @@ end
 def papers
 	@paper = Exam.find(session[:exam_id]) rescue nil
 
-	raise @paper.inspect
+
+	#raise @paper.inspect
+
+
 	#session[:exam_id] = nil
 
 	# @user = #@paper

@@ -9,9 +9,11 @@
   <div class="inputs"> 
     <%#raise @paper.inspect%>
         <% @paper.questions.each do |question| %> 
+        <%# for question in @paper.questions %>
     <%#= question_form.input :category, :collection => 
 get_categories, :include_blank => false %> 
-        <%#= f.hidden_field "question_id_#{question.id}", :value => question.id  %><%= question.content %><br>
+        <%#= f.hidden_field "question_id_#{question.id}", :value => question.id  %>
+        <%= question.content %><br>
 
         <% for answer in question.answers %>
           <%#=  :answer do |choice_form| %> 

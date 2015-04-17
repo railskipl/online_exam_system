@@ -42,6 +42,7 @@ raise params.inspect
 	end	
 end
 
+
 def score
  raise userresult_params.inspect	
 end
@@ -72,23 +73,42 @@ end
 # 	# end	
 # end
 
-def score
-	 #raise @paper.inspect
+
+
+def score 
+
+    #raise @paper.inspect
+
 	user_params["question_id"].each do |i|
-     r = Result.new(user_params)
+     @r = Result.new(user_params)
      r.question_id = i[0]
-     
-     r.answer_id = i[1]
-     
+   #  @q = r.question_id
+     r.answer_id = i[1] 
+    # @a = r.answer_id
+
      r.save
 	end
-      
+
 	redirect_to :back
     # @user = Result.new(user_params)
     
     # @user.save
  
 end
+
+
+# def check_answer
+#     stage_score = 0
+#     self.userchoices.each do |attempt|
+#       if attempt.answer.correct? == true
+#         stage_score += 1
+#       elsif attempt.answer.correct == false
+#         stage_score - 1
+#       end
+#     end
+#     stage_score
+#   end
+
 
 
 private
