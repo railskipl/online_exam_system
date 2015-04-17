@@ -9,13 +9,13 @@ Rails.application.routes.draw do
   resources :userchoices
 
   post '/results' => "userchoices#score"
+  match '/finish' => "userchoices#evaluate",:as=>"finish",via: [:get, :post]
 
   get '/papers' => "users#papers", :as => 'papers'
 
   # get '/instruction' => "users#instruction", :as => 'instruction'
  
   root 'users#new'
-  
   get '/index'=> 'admins#index'
 
 
