@@ -21,7 +21,7 @@
 get_categories, :include_blank => false %> 
         <%#= f.hidden_field "question_id_#{question.id}", :value => question.id  %>
 
-        <%= question.content %><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3><%= question.content %></h3><br>
 
         <% for answer in question.answers %>
           <%#=  :answer do |choice_form| %> 
@@ -29,12 +29,12 @@ get_categories, :include_blank => false %>
           <%#= radio_button_tag("question[answers_attributes][][correct]", 
 "false") %> 
         
-          <%= radio_button_tag("result[question_id][#{question.id}]", answer.id )  %><%= answer.content %><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= radio_button_tag("result[question_id][#{question.id}]", answer.id )  %><%= answer.content %><br>
         <% end %> 
   </div> 
 <% end %>
   <div class="actions"> 
-    <%= f.button :submit %> 
+   <br> <%= f.button :submit %> 
   </div> 
 <% end %>
 

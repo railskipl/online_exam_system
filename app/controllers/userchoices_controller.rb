@@ -80,18 +80,21 @@ end
 
 
 
-def score 
-
-
-    #raise @paper.inspect
-   #raise user_params.inspect
+def score
    
   count = 0
-	user_params["question_id"].each do |i|
+
+  question_id = user_params["question_id"]
+  
+  if question_id.nil?
+    raise "hi"
+
+   else
+     user_params["question_id"].each do |i|
      r = Result.new(user_params)
      r.question_id = i[0]
       
-     r.answer_id = i[1] 
+     r.answer_id = i[1]
 
       #raise r.question_id.inspect
       #raise r.answer_id.inspect 
@@ -135,19 +138,21 @@ def score
       
 
      r.save
-	end
+  end
 
-    @u_result = (( @count *  100 ) / @no_of_question )
+    @u_result = ( @count *  100 ) / @no_of_question 
              #raise u_result.inspect
 
 #return @count
 #raise @count.inspect
-	redirect_to "/finish?@count=#{@count}, @u_result=#{@u_result}"
+  redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}"
 
 
     # @user = Result.new(user_params)
     
     # @user.save
+   end 
+	
  
 end
 
