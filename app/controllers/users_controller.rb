@@ -11,6 +11,10 @@ def create
     @user = User.new(user_params)
 
 	if @user.save
+		@session_user_id = @user.id
+		#raise @session_user_id.inspect
+		session[:id] = @session_user_id
+		#raise session[:id].inspect
 		@current = @user.exam_id
 		session[:exam_id] = @current
 		redirect_to instruction_path
@@ -59,7 +63,7 @@ end
 
 def papers
 	@paper = Exam.find(session[:exam_id]) rescue nil
-
+#raise @paper.inspect
 
 	#raise @paper.inspect
 
@@ -110,10 +114,10 @@ end
 private
 
 def user_params
-	params.require(:user).permit(:firstname , :lastname, :email ,:dob , :contact , :address , :exam_id)
+	params.require(:user).permit(:id, :firstname , :lastname, :email ,:dob , :contact , :address , :exam_id)
 end
 
-def userresult_params
-	params.require(:result).permit(:id, :question_id, :answer_id, :userchoice_id)
-end
+
+
+
 end

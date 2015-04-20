@@ -7,12 +7,15 @@
   <%# end %>
 
   <div class="inputs"> 
-    <%#raise @paper.inspect%>
+   <%# raise @paper.inspect %>
         <% @paper.questions.each do |question| %> 
+         <%= f.hidden_field :userchoice_id, :value => session[:id] %>
+         <%#= f.hidden_field :exm_id, :value => session[:exam_id] %> 
         <%# for question in @paper.questions %>
     <%#= question_form.input :category, :collection => 
 get_categories, :include_blank => false %> 
         <%#= f.hidden_field "question_id_#{question.id}", :value => question.id  %>
+
         <%= question.content %><br>
 
         <% for answer in question.answers %>

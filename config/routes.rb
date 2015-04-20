@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/results'=>'admins#result'
 
   get '/instruction' => "users#instruction"
+  get '/finish'=> "userchoices#finish"
 
  
 

@@ -49,7 +49,9 @@ end
 
 
 
+  def finish
   
+end
 
 
 
@@ -77,19 +79,66 @@ end
 
 def score 
 
-    #raise @paper.inspect
 
+    #raise @paper.inspect
+   #raise user_params.inspect
+   
+  count = 0
 	user_params["question_id"].each do |i|
-     @r = Result.new(user_params)
+     r = Result.new(user_params)
      r.question_id = i[0]
-   #  @q = r.question_id
+      
      r.answer_id = i[1] 
-    # @a = r.answer_id
+
+      #raise r.question_id.inspect
+      #raise r.answer_id.inspect 
+      #raise r.userchoice_id.inspect
+    
+     usr = User.find(r.userchoice_id)
+     exm = usr.exam_id
+     ans = Question.find(r.question_id)  
+     que = Exam.find(exm)
+
+      no_of_question = que.questions.count
+
+     @no_of_question = no_of_question
+     #raise no_of_question.inspect
+      cor_ans = ans.answers.each do |ss|
+        # cor_ans =ans.answers
+        # raise cor_ans.inspect
+        if ss.correct_answer?
+           cor_id = ss.id 
+           if r.answer_id == cor_id
+              
+              count = count + 1 
+              #raise count.inspect
+            else
+              count = count 
+                 
+            end
+              
+            @count =  count
+            #raise @count.inspect
+           
+        end
+        
+      end
+
+      
+       #raise usr.inspect
+       #raise exm.inspect
+       #raise cor_ans.inspect
+      
+      
 
      r.save
 	end
+    @u_result = (( @count *  100 ) / @no_of_question )
+             #raise u_result.inspect
 
-	redirect_to :back
+#return @count
+#raise @count.inspect
+	redirect_to "/finish?@count=#{@count}, @u_result=#{@u_result}"
     # @user = Result.new(user_params)
     
     # @user.save
@@ -97,17 +146,12 @@ def score
 end
 
 
-# def check_answer
-#     stage_score = 0
-#     self.userchoices.each do |attempt|
-#       if attempt.answer.correct? == true
-#         stage_score += 1
-#       elsif attempt.answer.correct == false
-#         stage_score - 1
-#       end
-#     end
-#     stage_score
-#   end
+  # if ans.answer_id==-1
+  #        unanswered+=1
+  #      elsif ans.answer_id==ans.test_question.question.correct_answer.id
+
+
+
 
 
 
@@ -120,6 +164,10 @@ def user_params
 
 params.require(:result).permit!
 
+end
+
+def userresult_params
+  params.require(:result).permit(:id, :question_id, :answer_id, :userchoice_id)
 end
 
  # def exam_params

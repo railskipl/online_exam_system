@@ -6,7 +6,5 @@ class Exam < ActiveRecord::Base
 	belongs_to :results
 	accepts_nested_attributes_for :questions, :allow_destroy => true
 	validates :name, :presence => true
-    #accepts_nested_attributes_for :userchoices
-	#accepts_nested_attributes_for :results
-
+    accepts_nested_attributes_for :userchoices
 end
