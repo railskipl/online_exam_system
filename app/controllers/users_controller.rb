@@ -33,7 +33,26 @@ end
 
 def papers
 	@paper = Exam.find(session[:exam_id]) rescue nil
+	  if @paper.starttime.nil?
+        @paper.starttime=Time.now
+        @paper.save
+        #raise @paper.inspect
+       end
 
+        if @paper.timing==0
+          @time=-1
+          #raise @time.inspect
+      	else
+          @min=@paper.timing-((Time.now-@paper.starttime)/60).to_i
+          #raise @min.inspect
+          @sec=((Time.now-@paper.starttime)%60).to_i
+          #raise @sec.inspect
+        @time=1
+        if @min > @paper.timing || @min <= 0
+          @time=0
+        end
+     
+ end
 
 end
 
