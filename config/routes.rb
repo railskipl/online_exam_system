@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :exams
+ resources :exams
 
   resources :users
 
@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   resources :userchoices
 
   post '/results' => "userchoices#score"
-  match '/finish' => "userchoices#evaluate",:as=>"finish",via: [:get, :post]
-
+  
   get '/papers' => "users#papers", :as => 'papers'
 
   # get '/instruction' => "users#instruction", :as => 'instruction'
@@ -24,6 +23,10 @@ Rails.application.routes.draw do
   get '/results'=>'admins#result'
 
   get '/instruction' => "users#instruction"
+  get '/finish'=> "userchoices#finish"
+
+ 
+
 
  
 end

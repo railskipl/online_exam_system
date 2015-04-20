@@ -24,6 +24,7 @@
 <br>
 
 
+
 <%= form_for Result.new do |f| %> 
   <%#= question_form.error_notification %> 
   <%#= f.fields_for :questions do |builder| %>
@@ -32,10 +33,15 @@
   <%# end %>
 
   <div class="inputs"> 
+   <%# raise @paper.inspect %>
         <% @paper.questions.each do |question| %> 
          <%= f.hidden_field :userchoice_id, :value => session[:id] %>
+
+         <%#= f.hidden_field :exm_id, :value => session[:exam_id] %> 
+
          <%#= raise session[:exam_id].inspect %>
          <%= f.hidden_field :exam_id, :value => session[:exam_id] %>
+
         <%# for question in @paper.questions %>
     <%#= question_form.input :category, :collection => 
 get_categories, :include_blank => false %> 
@@ -59,5 +65,6 @@ get_categories, :include_blank => false %>
 <% end %>
 
 <div style='display:none' id="timeup"><% if @time==0 %>0<%else%>1<%end%></div>
+
 
 

@@ -61,8 +61,8 @@
     </div>
   </div> <br />
   <div class="control-group">
-<%= f.select(:exam_id, Exam.all.collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' }) %> 
-</div><br />
+      <%= f.select(:exam_id, Exam.all.collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' }) %> 
+  </div><br />
    <div class="control-group">  
   <%= f.submit nil, :class => 'btn btn-primary' %>
   </div>

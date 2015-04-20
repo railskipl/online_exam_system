@@ -12,6 +12,9 @@ class ExamsController < ApplicationController
   def show
   end
 
+#  @answer = @question.answers.new(question_params[:answers_attributes]["#{i}"])
+#@question.quiz_id = @quiz.id
+ 
   # GET /exams/new
   def new
         @exam = Exam.new
@@ -28,9 +31,13 @@ class ExamsController < ApplicationController
 
   def create
     @exam = Exam.new(exam_params)
+
+      #raise exam_params.inspect
+
     
   #raise exam_params.inspect
      #if @question.save && Answer.where(question_id: @question.id).where(correct: true).count != 1
+
     respond_to do |format|
       if @exam.save #&& Answer.where(exam_id: @question.id).where(correct: true).count != 1
         format.html { redirect_to @exam, notice: 'Exam was successfully created.' }
