@@ -27,6 +27,7 @@ end
 
 
 
+
 # def exam
 	
 
@@ -57,12 +58,17 @@ end
 
 
 
+	
+
+
+
 def instruction 
    #raise session[:exam_id].inspect
 end
 
 def papers
 	@paper = Exam.find(session[:exam_id]) rescue nil
+
 #raise @paper.inspect
 
 	#raise @paper.inspect
@@ -70,20 +76,10 @@ def papers
 
 	#session[:exam_id] = nil
 
-	# @user = #@paper
-	# @user = Result.new(choice_params)
-	#variant = @paper
-    #@result = Result.new
-    #@result.variant = variant
-   # @questions = Question.find(@paper)
-    #raise @questions.inspect
-    
 
-	# @result = Result.new
- #    @questions = Question.where (variant: variant)
- #    @questions.each {|question| quiestion.answers.build}
 
 end
+
 
 def show
   
@@ -100,22 +96,15 @@ end
 # end
 
 
-# private
 
-# def choice_params
 
-# params.require(:result).permit(:id , :question_id , :answer_id , :userchoice_id )
-
-# #params.require(:result).permit(:id , :question_attributes => [:question_id, :answer_attributes => [:answer_id , :userchoice_attributes => [:userchoice_id]]] )
-
-# end
 
 
 private
 
-def user_params
-	params.require(:user).permit(:id, :firstname , :lastname, :email ,:dob , :contact , :address , :exam_id)
-end
+	def user_params
+		params.require(:user).permit(:id, :firstname , :lastname, :email ,:dob , :contact , :address , :exam_id)
+	end
 
 
 

@@ -1,5 +1,6 @@
 class UserchoicesController < ApplicationController
 
+
  def new
  	 #@user = Result.new
  end
@@ -46,6 +47,8 @@ end
 def score
  raise userresult_params.inspect	
 end
+
+
 
 
 
@@ -133,17 +136,21 @@ def score
 
      r.save
 	end
+
     @u_result = (( @count *  100 ) / @no_of_question )
              #raise u_result.inspect
 
 #return @count
 #raise @count.inspect
 	redirect_to "/finish?@count=#{@count}, @u_result=#{@u_result}"
+
+
     # @user = Result.new(user_params)
     
     # @user.save
  
 end
+
 
 
   # if ans.answer_id==-1
@@ -166,25 +173,13 @@ params.require(:result).permit!
 
 end
 
+
 def userresult_params
   params.require(:result).permit(:id, :question_id, :answer_id, :userchoice_id)
 end
 
- # def exam_params
- #      params.require(:exam).permit(:name, :questions_attributes => [:id, :exam_id, :content, :_destroy, :answers_attributes => [:id, :question_id, :correct_answer, :content, :_destroy]])
- #    end
-
-# private 
-
-# def choice_params		
-
-#     params.require(:userchoice).permit(:id , :exam_id , :user_id ) 
-#  	#params.require(:userchoice).permit(:id, :exam_attributes => [:exam_id , :user_attributes => [:user_id, :questions_attributes => [:question_id, :answers_attributes => [:answer_id ]]]])
-
-# end
-
-
+ 
 end
 
 
-# :questions_attributes => [:id, :exam_id, :content, :_destroy, :answers_attributes => [:id, :question_id, :correct_answer, :content, :_destroy]])
+

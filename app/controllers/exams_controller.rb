@@ -26,18 +26,9 @@ class ExamsController < ApplicationController
 
   # GET /exams/1/edit
   def edit
+    
   end
 
-  # @question = Question.new(question_params)
-  #   @question.quiz_id = @quiz.id
-  #   i = 0
-  #   until question_params[:answers_attributes].count
-  #     @answer = @question.answers.new(question_params[:answers_attributes]["#{i}"])
-  #     @answer.save
-  #     i += 1
-
-  # POST /exams
-  # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
 
