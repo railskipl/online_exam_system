@@ -15,9 +15,14 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+   <div class="field">
+    <%= f.label :timing %><br>
+    <%= f.number_field :timing %>
+  </div>
   <h2>Questions</h2>
     <%#= f.fields_for :questions  %>
        <%= f.fields_for :questions %>
 <p><%= f.link_to_add "Add a question", :questions %></p>
+<%#raise f.inspect%>
 <p><%= f.submit "Submit" %></p>
 <% end %>

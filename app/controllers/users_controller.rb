@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
 def new
 	@user = User.new
+	#@user_result = Result.new
+
 end
 
 def create
@@ -20,11 +22,6 @@ def create
 		render :new
 	end	
 end
-	
-def show
-  
-end
-	
 
 
 def instruction 
@@ -32,13 +29,41 @@ def instruction
 end
 
 def papers
+
 	@paper = Exam.find(session[:exam_id]) rescue nil
+	    
+	    # @paper.starttime = nil
+	  	if @paper.starttime.nil?
+        @paper.starttime=Time.now
+        @paper.save
+        raise @paper.inspect
+      	 end
 
-
+        if @paper.timing==0
+          @time=-1
+          #raise @time.inspect
+      	else
+          @min = @paper.timing-((Time.now-@paper.starttime)/60).to_i
+          #raise @min.inspect
+          @sec=((Time.now-@paper.starttime)%60).to_i
+          #raise @sec.inspect
+        @time=1
+        if @min > @paper.timing || @min <= 0
+          @time=0
+        end
+     
+ 		end
 end
 
 
+def show
+  
+end
 
+
+def result
+	
+end
 
 
 private
@@ -46,5 +71,8 @@ private
 	def user_params
 		params.require(:user).permit(:id, :firstname , :lastname, :email ,:dob , :contact , :address , :exam_id)
 	end
+
+
+
 
 end
