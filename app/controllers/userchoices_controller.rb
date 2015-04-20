@@ -1,49 +1,25 @@
 class UserchoicesController < ApplicationController
 
-# def new
-# 	@user_choice = Userchoice.new
-# end
 
-# def create
-	
-# 	# raise params[:exam_id].inspect
 
-# 	@user_choices = Userchoice.new(choice_params)
-# 	# raise params.inspect
-# 	 # raise @user_choices.inspect
-# 	@user_choices.save!
-# end
-
-def create
-raise params.inspect
-#    @user = params :results.values.collect { |result| Result.new(result) } 
-# 	 if @results.all?(&:valid?) 
-# 		@results.each(&:save!)
-#        redirect_to :action => ‘index’  
-     
-#      else render :action => ‘new’
-# end 
- #    @user = Result.new(user_params)
- #      raise @user.inspect
-	# if @user.save
-	# 	redirect_to users_path
-	# else
-	# 	render :new
-	# end	
-end
 
 def score 
 
-   # raise user_params.inspect
+   #raise user_params.inspect
 
 	user_params["question_id"].each do |i|
      r = Result.new(user_params)
      r.question_id = i[0]
      r.answer_id = i[1] 
+     #r.userchoice_id = session[:id]
      r.save
 	end
+
                             
-	redirect_to :back
+	
+
+	redirect_to finish_path
+
     # @user = Result.new(user_params)
     
     # @user.save
@@ -51,44 +27,40 @@ def score
 end
 
 
-# def check_answer
-#     stage_score = 0
-#     self.userchoices.each do |attempt|
-#       if attempt.answer.correct? == true
-#         stage_score += 1
-#       elsif attempt.answer.correct == false
-#         stage_score - 1
-#       end
-#     end
-#     stage_score
-#   end
+def evaluate
+     
+ @result=Result.where(:userchoice_id=>session[:id])
+#raise Result.userchoice_id.inspect
 
 
 
-private
 
-def user_params
+raise @result.inspect
+  #   if !@result.completed
+  #     answers=params[:answer]
+  #     answers.each do |qn,ans|
+  #       if ans!=-1
+  #         a=CandidateAnswer.find(qn)
+  #         a.answer_id=ans
+  #         a.save
+  #       end
+  #     end
+  #     @result.calculate_result(session[:test_id])
+  #     redirect_to :action=>'finish',:candidate_id=>session[:candidate_id]
+  #   else
+  #     flash[:warning]="Please enter test from home!"
+  #     redirect_to root_url
+  #   end
+ end
 
-#params.require(:result).permit(:id , :question_id , :answer_id , :userchoice_id )
 
-params.require(:result).permit!
 
-end
+	private
 
- # def exam_params
- #      params.require(:exam).permit(:name, :questions_attributes => [:id, :exam_id, :content, :_destroy, :answers_attributes => [:id, :question_id, :correct_answer, :content, :_destroy]])
- #    end
-
-# private 
-
-# def choice_params
-
-#     params.require(:userchoice).permit(:id , :exam_id , :user_id ) 
-#  	#params.require(:userchoice).permit(:id, :exam_attributes => [:exam_id , :user_attributes => [:user_id, :questions_attributes => [:question_id, :answers_attributes => [:answer_id ]]]])
-
-# end
-
+		def user_params
+		params.require(:result).permit!
+		end
 end
 
 
-# :questions_attributes => [:id, :exam_id, :content, :_destroy, :answers_attributes => [:id, :question_id, :correct_answer, :content, :_destroy]])
+
