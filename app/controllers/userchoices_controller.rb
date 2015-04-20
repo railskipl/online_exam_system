@@ -1,19 +1,12 @@
 class UserchoicesController < ApplicationController
 
 
+
+
  def new
  	 #@user = Result.new
  end
 
-# def create
-	
-# 	# raise params[:exam_id].inspect
-
-# 	@user_choices = Userchoice.new(choice_params)
-# 	# raise params.inspect
-# 	 # raise @user_choices.inspect
-# 	@user_choices.save!
-# end
 
 def create
 
@@ -43,47 +36,19 @@ raise params.inspect
 	end	
 end
 
-
-def score
- raise userresult_params.inspect	
-end
+ def finish  
+  end
 
 
 
 
 
-  def finish
+
+
+def score 
   
-end
-
-
-
-# private
-
-# def userresult_params
-
-# 	params.require(:result).permit(:id, :question_id, :answer_id, :userchoice_id)
-# end
-
-# def choice_params
-#  	params.require(:userchoice).permit(:id, :exam_attributes => [:exam_id , :user_attributes => [:user_id, :questions_attributes => [:question_id, :answers_attributes => [:answer_id ]]]])
-# end
-
-#  #    @user = Result.new(user_params)
-#  #      raise @user.inspect
-# 	# if @user.save
-# 	# 	redirect_to users_path
-# 	# else
-# 	# 	render :new
-# 	# end	
-# end
-
-
-
-def score
-   
   count = 0
-
+  #raise user_params["question_id"].inspect
   question_id = user_params["question_id"]
   
   if question_id.nil?
@@ -131,14 +96,10 @@ def score
       end
 
       
-       #raise usr.inspect
-       #raise exm.inspect
-       #raise cor_ans.inspect
-      
-      
 
      r.save
   end
+
 
     @u_result = ( @count *  100 ) / @no_of_question 
              #raise u_result.inspect
@@ -153,18 +114,7 @@ def score
     # @user.save
    end 
 	
- 
 end
-
-
-
-  # if ans.answer_id==-1
-  #        unanswered+=1
-  #      elsif ans.answer_id==ans.test_question.question.correct_answer.id
-
-
-
-
 
 
 private

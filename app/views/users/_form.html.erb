@@ -20,7 +20,7 @@
       <%= f.text_field :firstname, :class => 'form-control' %>
 
     </div>
-    <%= error_span(@user[:firstname]) %>
+  
   </div>
 
 
@@ -29,7 +29,6 @@
     <div class="controls">
       <%= f.text_field :lastname, :class => 'form-control' %>
     </div>
-    <%= error_span(@user[:lastname]) %>
   </div>
 
 
@@ -39,7 +38,6 @@
     <div class="controls">
       <%= f.text_field :email, :class => 'form-control' %>
     </div>
-    <%= error_span(@user[:email]) %>
   </div>
 
 
@@ -49,21 +47,18 @@
     <div>
       <%= f.text_field :dob, :autocomplete=>"off",:readonly => true,:class => 'form-control'  %>
     </div>
-    <%= error_span(@user[:dob]) %>
   </div>
   <div class="control-group">
     <%= f.label :contact, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :contact, :class => 'form-control' %>
-    </div>
-    <%= error_span(@user[:contact]) %>
+  </div>
   </div>
   <div class="control-group">
     <%= f.label :address, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :address, :class => 'form-control' %>
     </div>
-    <%= error_span(@user[:address]) %>
   </div> <br />
   <div class="control-group">
       <%= f.select(:exam_id, Exam.all.collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' }) %> 

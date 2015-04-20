@@ -22,44 +22,6 @@ def create
 		render :new
 	end	
 end
-	
-
-
-
-
-
-# def exam
-	
-
-#     @user = User.new(user_params)
-
-# 	if @user.save
-# 		@current = @user.exam_id
-# 		session[:exam_id] = @current
-# 		redirect_to instruction_path
-# 	else
-# 		render :new
-# 	end	
-
-#     # raise "hi"
-#  #    @user_result = Result.new(userresult_params)
-#  #       raise userresult_params.inspect
-# 	# if @user_result.save
-# 	# 	redirect_to users_path
-# 	# else
-# 	# 	render :new
-# 	# end	
-	
-# end
-	
-
-
-
-
-
-
-	
-
 
 
 def instruction 
@@ -68,14 +30,28 @@ end
 
 def papers
 	@paper = Exam.find(session[:exam_id]) rescue nil
+	  	@paper.starttime=nil
+	  	if @paper.starttime.nil?
+        @paper.starttime=Time.now
+        @paper.save
+        #raise @paper.inspect
+      	 end
 
-#raise @paper.inspect
+        if @paper.timing==0
+          @time=-1
+          #raise @time.inspect
+      	else
+          @min=@paper.timing-((Time.now-@paper.starttime)/60).to_i
+          #raise @min.inspect
+          @sec=((Time.now-@paper.starttime)%60).to_i
+          #raise @sec.inspect
+        @time=1
+        if @min > @paper.timing || @min <= 0
+          @time=0
 
-	#raise @paper.inspect
-
-
-	#session[:exam_id] = nil
-
+        end
+    
+ 		end
 
 
 end
@@ -84,16 +60,12 @@ end
 def show
   
 end
+
+
 def result
 	
 end
 
-# def score
-
-#  @user = Result.new(choice_params)
-#  @user.save
- 
-# end
 
 
 
