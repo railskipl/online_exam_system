@@ -19,7 +19,8 @@ get_categories, :include_blank => false %>
           <%#= radio_button_tag("question[answers_attributes][][correct]", 
 "false") %> 
         
-          <%= radio_button_tag("result[question_id][#{question.id}]", answer.id )  %><%= answer.content %><br>
+          <%= radio_button_tag("result[question_id][#{question.id}]", answer.id )  %>
+          <%= answer.content %><br>
         <% end %> 
   </div> 
 <% end %>

@@ -42,6 +42,7 @@ def score
      r.answer_id = i[1] 
      r.save
 	end
+                            
 	redirect_to :back
     # @user = Result.new(user_params)
     
