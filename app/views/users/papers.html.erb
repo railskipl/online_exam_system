@@ -7,14 +7,14 @@
   }
   now.setMinutes(now.getMinutes()+<%=@min%>);
   now.setSeconds(now.getSeconds()-<%=@sec%>);
-  $('#time').countdown({until:now, format: 'MS'});
+  $('#time').countdown({until:now, format: 'MS',onExpiry:stopTest});
 
   });
 
   function stopTest(){
     $('#time').html('<center><h4>Time\'s up!</h4></center>');
     $('#timeup').html('0');
-    $('input.radio').attr("onclick","return false;");
+   $("#new_result").submit();
 
   }
   </script>

@@ -30,6 +30,7 @@ end
 
 def papers
 	@paper = Exam.find(session[:exam_id]) rescue nil
+		@paper.starttime = nil
 	  	if @paper.starttime.nil?
         @paper.starttime=Time.now
         @paper.save
