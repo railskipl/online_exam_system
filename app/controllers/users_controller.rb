@@ -29,8 +29,9 @@ def instruction
 end
 
 def papers
-	@paper = Exam.find(session[:exam_id]) rescue nil
+		@paper = Exam.find(session[:exam_id]) rescue nil
 		@paper.starttime = nil
+
 	  	if @paper.starttime.nil?
         @paper.starttime=Time.now
         @paper.save
@@ -48,9 +49,12 @@ def papers
         @time=1
         if @min > @paper.timing || @min <= 0
           @time=0
+
         end
-     
+    
  		end
+
+
 end
 
 
