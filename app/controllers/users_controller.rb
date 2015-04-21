@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+helper_method :pretty_date_time
 
 def new
 	@user = User.new
@@ -30,22 +31,30 @@ end
 
 def papers
 	@paper = Exam.find(session[:exam_id]) rescue nil
+	@questions = @paper.questions.paginate(:page => params[:page] ,:per_page => 2)
 	#raise @paper.inspect
 	#@paper.starttime = nil
 		@paper.starttime = nil
 	  	if @paper.starttime.nil?
-        @paper.starttime=Time.now
+	  	#raise @paper.inspect
+	  	#raise Time.now.inspect	
+        @paper.starttime = Time.zone.now #.strftime "%d-%m-%Y %H:%M:%S"
+ 		#raise @paper.starttime.inspect
         @paper.save
-        #raise @paper.inspect
+       
       	 end
 
         if @paper.timing==0
           @time=-1
           #raise @time.inspect
       	else
-          @min=@paper.timing-((Time.now-@paper.starttime)/60).to_i
+      		#raise @paper.inspect
+         # @min= @paper.timing-((Time.now-@paper.starttime)/60).to_i
+
+          @min=@paper.timing-((Time.zone.now-@paper.starttime)/60).to_i
+
           #raise @min.inspect
-          @sec=((Time.now-@paper.starttime)%60).to_i
+          @sec=((Time.zone.now-@paper.starttime)%60).to_i
           #raise @sec.inspect
         @time=1
         if @min > @paper.timing || @min <= 0
@@ -55,8 +64,7 @@ def papers
     
  		end
 
- 		
- 		
+
 end
 
 
@@ -68,12 +76,6 @@ end
 def result
 	
 end
-
-
-
-
-
-
 
 private
 
