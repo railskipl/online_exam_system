@@ -1,71 +1,58 @@
 <%= form_for @user, :html => { :class => "form-horizontal user" } do |f| %>
 
-    <% if @user.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
- <div class="control-group">
-    <%= f.label :firstname, :class => 'control-label', :size => "10x10" %>
-   <div class="controls">
-      <%= f.text_field :firstname, :class => 'form-control' %>
-
-    </div>
-  
-  </div>
-
-
-  <div class="control-group">
-    <%= f.label :lastname, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :lastname, :class => 'form-control' %>
-    </div>
-  </div>
-
-
-
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'form-control' %>
-    </div>
-  </div>
-
-
-
-  <div >
-    <%= f.label :dob, :class => 'control-label' %>
     <div>
-      <%= f.text_field :dob, :autocomplete=>"off",:readonly => true,:class => 'form-control'  %>
+        <%= f.label :firstname%>
+      <div>
+          <%= f.text_field :firstname%>
+      </div>
+  
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :contact, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :contact, :class => 'form-control' %>
-  </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :address, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :address, :class => 'form-control' %>
+
+
+    <div>
+      <%= f.label :lastname%>
+      <div >
+        <%= f.text_field :lastname%>
+      </div>
     </div>
-  </div> <br />
-  <div class="control-group">
-      <%= f.select(:exam_id, Exam.all.collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' }) %> 
-  </div><br />
-   <div class="control-group">  
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  </div>
+
+
+
+    <div>
+      <%= f.label :email%>
+      <div>
+        <%= f.text_field :email%>
+      </div>
+    </div>
+
+    <div >
+      <%= f.label :dob%>
+      <div>
+        <%= f.text_field :dob, :autocomplete=>"off",:readonly => true%>
+      </div>
+    </div>
+
+    <div>
+      <%= f.label :contact%>
+      <div>
+        <%= f.text_field :contact%>
+    </div>
+    </div>
+    
+    <div>
+      <%= f.label :address%>
+      <div>
+        <%= f.text_area :address%>
+      </div>
+    </div> <br />
+
+    <div>
+        <%= f.select(:exam_id, Exam.all.collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' }) %> 
+    </div><br />
+
+     <div>  
+    <%= f.submit nil%>
+    </div>
 
 
 <% end %>
