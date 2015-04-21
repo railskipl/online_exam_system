@@ -52,7 +52,10 @@ def score
   question_id = user_params["question_id"]
   
   if question_id.nil?
-    raise "hi"
+       @count = 0
+       @u_result = 0
+       
+       redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}"
 
    else
      user_params["question_id"].each do |i|
