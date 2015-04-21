@@ -1,49 +1,30 @@
 class UserchoicesController < ApplicationController
 
  def new
- 	 #@user = Result.new
+   #@user = Result.new
  end
 
 
 def create
-
-
-	 # @user_choices = Userchoice.new(choice_params)
-	 # raise @user_choices.inspect
-	 # @user_choices.save
-
-
-raise params.inspect
-
-#    @user = params :results.values.collect { |result| Result.new(result) } 
-# 	 if @results.all?(&:valid?) 
-# 		@results.each(&:save!)
-#        redirect_to :action => ‘index’  
-     
-#      else render :action => ‘new’
-# end 
-
-
-    @user = Result.new(userresult_params)
-       raise userresult_params.inspect
-	if @user.save
-		redirect_to users_path
-	else
-		render 'new'
-	end	
+  
 end
 
  def finish  
-  
-  end
+# reset_session
+ # session[:user_id] =nil
+ # session[:exam_id]=nil
+ # session[:id]= nil
+
+end
 
 
 
 
 def score 
 
+   
   count = 0
-	user_params["question_id"].each do |i|
+  user_params["question_id"].each do |i|
      r = Result.new(user_params)
      r.question_id = i[0]
       
@@ -58,7 +39,7 @@ def score
      ans = Question.find(r.question_id)  
      que = Exam.find(exm)
 
-      no_of_question = que.questions.count
+    no_of_question = que.questions.count
 
      @no_of_question = no_of_question
      #raise no_of_question.inspect
@@ -83,17 +64,16 @@ def score
         
       end
 
+      
+
      r.save
-	end
+  end
 
-                            
-	
-
-
+                          
 
     @u_result = (( @count *  100 ) / @no_of_question )
 
-	redirect_to "/finish?@count=#{@count}, @u_result=#{@u_result}"
+  redirect_to "/finish?@count=#{@count}, @u_result=#{@u_result}"
 
  
 end
