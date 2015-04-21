@@ -4,16 +4,16 @@ class UserchoicesController < ApplicationController
 
  end
 
-def finish  
-   @paper = Exam.find(session[:exam_id]) rescue nil
-   @paper.starttime = nil
-   @paper.save
+
+
+
+def finish 
+@paper = Exam.find(session[:exam_id]) rescue nil
+@paper.starttime = nil
+@paper.save
+session[:exam_id] = nil
+session[:id] = nil
 end
-
-
-
-
-
 
 
 def score 
@@ -21,17 +21,13 @@ def score
   count = 0
   
   question_id = user_params["question_id"]
-  
-  if question_id.nil?
-    raise "hi"
-
-   else
+   if question_id.nil?
+     redirect_to :back
+ else
      user_params["question_id"].each do |i|
-     r = Result.new(user_params)
-     r.question_id = i[0]
-      
-     r.answer_id = i[1]
-
+      r = Result.new(user_params)
+      r.question_id = i[0]
+      r.answer_id = i[1]
      usr = User.find(r.userchoice_id)
      exm = usr.exam_id
      ans = Question.find(r.question_id)  
@@ -64,19 +60,17 @@ def score
   end
 
 
-    @u_result = ( @count *  100 ) / @no_of_question 
+    @u_result = ( @count *  100 ) / @no_of_question              
   redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}"
+
    end 
-	
+  
 end
 
 
 private
 
 def user_params
-
-#params.require(:result).permit(:id , :question_id , :answer_id , :userchoice_id )
-
 
 params.require(:result).permit!
 
@@ -89,6 +83,3 @@ end
 
  
 end
-
-
-

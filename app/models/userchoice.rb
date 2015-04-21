@@ -7,4 +7,6 @@ belongs_to :result
 accepts_nested_attributes_for :result 
  
 
+
+
 end

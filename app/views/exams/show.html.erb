@@ -12,7 +12,7 @@
  
   <h3>Questions</h3>
   <table width="100%">
-    <% @exam.questions.each_with_index do |q, i| %>
+    <% @questions.each_with_index do |q, i| %>
       <tr>
         <td colspan="2"> <%= i+1 %>. <%= q.content %></td>
       </tr>
@@ -34,3 +34,4 @@
 
 <%= link_to 'Edit', edit_exam_path(@exam) %> |
 <%= link_to 'Back', exams_path %>
+<%= will_paginate @questions %>

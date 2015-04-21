@@ -1,32 +1,34 @@
-
 <div>
     <% if @paper.timing!=0 %><div id="time" class="bg"></div><%end%>
 <br>
 
 
+<%= form_for Result.new, :html => {:target=> "new" } do |f| %> 
 
-<%= form_for Result.new do |f| %> 
     <div class="inputs"> 
-          <% @paper.questions.each do |question| %> 
-           <%= f.hidden_field :userchoice_id, :value => session[:id] %>
-            <%= f.hidden_field :exam_id, :value => session[:exam_id] %><br>
-              <h3><%= question.content %></h3><br>
-                  <% for answer in question.answers %>
-                      <%= radio_button_tag("result[question_id][#{question.id}]", answer.id )  %>
-                         <%= answer.content %><br>
-                  <% end %> 
+        <% @questions.each do |question| %> 
+         <%= f.hidden_field :userchoice_id, :value => session[:id] %>
+         <%= f.hidden_field :exam_id, :value => session[:exam_id] %><br>
+        <h3><%= question.content %></h3><br>
+        <% for answer in question.answers %>
+          <%= radio_button_tag("result[question_id][#{question.id}]", answer.id )  %>
+          <%= answer.content %><br>
+
+        <% end %> 
+    </div> 
+  <% end %>
+
+
+    <div class="actions"> 
+     <br> <%= f.button :submit  %> 
     </div> 
 
-    <% end %>
-
- <div class="actions"> <br> 
-        <%= f.button :submit %> 
-</div> 
+    
 <% end %>
 
 <div style='display:none' id="timeup"><% if @time==0 %>0<%else%>1<%end%></div>
 
-
+<%= will_paginate @questions %>
 
 
 <!-- 

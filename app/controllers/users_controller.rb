@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+helper_method :pretty_date_time
 
 def new
 	@user = User.new
@@ -22,12 +23,13 @@ def create
 end
 
 def papers
+
 		@paper = Exam.find(session[:exam_id]) rescue nil
 		#@paper.starttime = nil
 	  		if @paper.starttime.nil?
         		@paper.starttime=Time.zone.now
         		@paper.save
-      	 	end
+      	end
 
         	if @paper.timing==0
           		@time=-1
@@ -35,15 +37,11 @@ def papers
 
           		@min=@paper.timing-((Time.zone.now-@paper.starttime)/60).to_i
           		@sec=((Time.zone.now-@paper.starttime)%60).to_i
-        		@time=1
+        		  @time=1
        			 if @min > @paper.timing || @min <= 0
          		    @time=0
-
-        		end
-    
- 			end
-
-
+             end  
+ 			    end
 end
 
 def instruction 
@@ -59,17 +57,10 @@ def result
 	
 end
 
-
-
-
-
-
-
 private
 
 	def user_params
 		params.require(:user).permit(:id, :firstname , :lastname, :email ,:dob , :contact , :address , :exam_id)
 	end
-
 
 end

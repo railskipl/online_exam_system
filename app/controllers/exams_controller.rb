@@ -4,12 +4,16 @@ class ExamsController < ApplicationController
   # GET /exams
   # GET /exams.json
   def index
-    @exams = Exam.all
+    @exams = Exam.all.paginate(:page => params[:page] ,:per_page => 5)
   end
 
   # GET /exams/1
   # GET /exams/1.json
   def show
+
+
+      @questions = @exam.questions.paginate(:page => params[:page] ,:per_page => 2)
+
   end
 
 #  @answer = @question.answers.new(question_params[:answers_attributes]["#{i}"])
@@ -31,13 +35,6 @@ class ExamsController < ApplicationController
 
   def create
     @exam = Exam.new(exam_params)
-
-      #raise exam_params.inspect
-
-    
-  #raise exam_params.inspect
-     #if @question.save && Answer.where(question_id: @question.id).where(correct: true).count != 1
-
     respond_to do |format|
       if @exam.save #&& Answer.where(exam_id: @question.id).where(correct: true).count != 1
         format.html { redirect_to @exam, notice: 'Exam was successfully created.' }
@@ -81,6 +78,6 @@ class ExamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exam_params
-      params.require(:exam).permit(:name,:timing ,:questions_attributes => [:id, :exam_id, :content, :_destroy, :answers_attributes => [:id, :question_id, :correct_answer, :content, :_destroy]])
+      params.require(:exam).permit(:name,:timing , :starttime ,:questions_attributes => [:id, :exam_id, :content, :_destroy, :answers_attributes => [:id, :question_id, :correct_answer, :content, :_destroy]])
     end
 end
