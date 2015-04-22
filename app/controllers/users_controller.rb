@@ -1,10 +1,17 @@
 class UsersController < ApplicationController
 
 helper_method :pretty_date_time
+before_filter :authenticate, :except => [:new, :create , :update , :destroy , :papers , :instruction]
 
+def authenticate
+ if adminsection_signed_in? 
+    
+    else
+    	redirect_to root_path
+ end
+end
 
 def index
-
 	@users = User.order(:firstname).paginate(:page => params[:page] ,:per_page => 5)
 end
 
