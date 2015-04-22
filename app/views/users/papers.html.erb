@@ -29,7 +29,7 @@
 <% if @paper.timing!=0 %><div id="time" class="bg"></div><%end%>
 <br>
 
-<%= form_for Result.new do |f| %> 
+<%= form_for Result.new, :html => {:target=> "new" } do |f| %> 
 
   <div class="inputs"> 
 
@@ -66,13 +66,13 @@ get_categories, :include_blank => false %>
 
   <div class="actions"> 
 
-   <br> <%#= f.button :submit %>
-<button data-disable-with="Please wait..." name="button" type="submit">Checkout</button>
+   <br> <%= f.button :submit %>
+<!-- <button data-disable-with="Please wait..." name="button" type="submit">Checkout</button> -->
    
   </div> 
 <% end %>
 
 <div style='display:none' id="timeup"><% if @time==0 %>0<%else%>1<%end%></div>
 
-<%= will_paginate @questions %>
+  
 

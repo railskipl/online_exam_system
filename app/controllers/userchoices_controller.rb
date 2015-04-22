@@ -1,12 +1,8 @@
 class UserchoicesController < ApplicationController
 
-
-
-
  def new
    #@user = Result.new
  end
-
 
 
 def finish 
@@ -16,9 +12,7 @@ def finish
 #raise @paper.inspect
 session[:exam_id] = nil
 session[:id] = nil
-
 end
-
 
 def score 
   
@@ -66,23 +60,41 @@ def score
               
             @count =  count
             #raise @count.inspect
-           
-        end
-        
+        end        
       end
- 
+
      r.save
   end
      #raise @count.inspect
      @u_result = ( @count *  100 ) / @no_of_question 
      #raise @u_result.inspect
 
+      @uid = user_params[:userchoice_id]
+      #raise @uid.inspect
+      uid = User.find(@uid)
 
-   
-             
+      #uid.save
+      @u_result = ( @count *  100 ) / @no_of_question
+      #u_examid = uid.exam_id
+      u_percent =uid.percent
+      u_percent = @u_result
+      uid.percent = u_percent
+
+       #raise uid.percent.inspect
+
+      u_correct =uid.no_of_correct_answer
+      u_correct = @count
+      uid.no_of_correct_answer = u_correct
+
+#raise uid.no_of_correct_answer.inspect
+# uid.exam_id = @u_examid 
+ uid.save
+
+
   redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}"
 
-   end 
+   end
+
   
 end
 
@@ -94,8 +106,6 @@ def user_params
 params.require(:result).permit!
 
 end
-
-
-
- 
 end
+
+
