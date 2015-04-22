@@ -17,8 +17,6 @@ end
 
 def new
 	@user = User.new
-	#@user_result = Result.new
-
 end
 
 def create
@@ -26,9 +24,7 @@ def create
 
 	if @user.save
 		@session_user_id = @user.id
-		#raise @session_user_id.inspect
 		session[:id] = @session_user_id
-		#raise session[:id].inspect
 		@current = @user.exam_id
 		session[:exam_id] = @current
 		redirect_to instruction_path
@@ -37,47 +33,50 @@ def create
 	end	
 end
 
+def edit 
+	
+	@user = User.find(params[:id])
 
-def instruction 
-   #raise session[:exam_id].inspect
+end
+def update 
+	@user = User.find(params[:id])
+	respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to instruction_path, notice: 'Your Details was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
 end
 
 def papers
-	@paper = Exam.find(session[:exam_id]) rescue nil
-	@questions = @paper.questions #.paginate(:page => params[:page] ,:per_page => 2)
-	#raise @paper.inspect
-	#@paper.starttime = nil
-		@paper.starttime = nil
-	  	if @paper.starttime.nil?
-	  	#raise @paper.inspect
-	  	#raise Time.now.inspect	
-        @paper.starttime = Time.zone.now #.strftime "%d-%m-%Y %H:%M:%S"
- 		#raise @paper.starttime.inspect
-        @paper.save
-       
-      	 end
 
-        if @paper.timing==0
-          @time=-1
-          #raise @time.inspect
-      	else
-      		#raise @paper.inspect
-         # @min= @paper.timing-((Time.now-@paper.starttime)/60).to_i
+		@paper = Exam.find(session[:exam_id]) rescue nil
+    @questions = @paper.questions.paginate(:page => params[:page] ,:per_page => 2)
+    #raise @paper.inspect
+	  		if @paper.starttime.nil?
+        		@paper.starttime=Time.zone.now
+        		@paper.save
+      	end
 
-          @min=@paper.timing-((Time.zone.now-@paper.starttime)/60).to_i
+        	if @paper.timing==0
+          		@time=-1
+      		else
 
-          #raise @min.inspect
-          @sec=((Time.zone.now-@paper.starttime)%60).to_i
-          #raise @sec.inspect
-        @time=1
-        if @min > @paper.timing || @min <= 0
-          @time=0
-
-        end
-    
- 		end
-
+          		@min=@paper.timing-((Time.zone.now-@paper.starttime)/60).to_i
+          		@sec=((Time.zone.now-@paper.starttime)%60).to_i
+        		  @time=1
+       			 if @min > @paper.timing || @min <= 0
+         		    @time=0
+             end  
+ 			    end
 end
+
+def instruction 
+    @test=Exam.find(session[:exam_id])
+    @candidate=User.find(session[:id])
+end
+
 
 def show
   @user = User.find(params[:id])

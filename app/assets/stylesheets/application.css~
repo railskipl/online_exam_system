@@ -34,7 +34,6 @@ Edit app/assets/stylesheets/application.css and add *= require bootstrap.min alo
  *= require bootstrap.min
  *= require bootstrap
 *= require sidenav
-*= require jquery.countdown
 *= require tinyscroll
  *= require_self
  *= require_tree .

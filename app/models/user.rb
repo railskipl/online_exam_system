@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
    # validates_format_of :lastname, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/
     
-  	belongs_to :exam
+ belongs_to :exam
 
 #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

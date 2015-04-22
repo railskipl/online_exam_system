@@ -1,27 +1,29 @@
 class UserchoicesController < ApplicationController
 
- def new
-   #@user = Result.new
- end
+
 
 def finish 
 @paper = Exam.find(session[:exam_id]) rescue nil
 @paper.starttime = nil
 @paper.save
-#raise @paper.inspect
 session[:exam_id] = nil
 session[:id] = nil
 end
 
 def score 
-  
   count = 0
   #raise user_params["question_id"].inspect
   question_id = user_params["question_id"]
-   if question_id.nil?
-     redirect_to :back
- else
-     user_params["question_id"].each do |i|
+
+  
+  if question_id.nil?
+       @count = 0
+       @u_result = 0
+       
+       redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}"
+
+   else
+      user_params["question_id"].each do |i|
       r = Result.new(user_params)
       r.question_id = i[0]
       r.answer_id = i[1]
@@ -55,29 +57,34 @@ def score
             #raise @count.inspect
         end        
       end
+
      r.save
   end
+     #raise @count.inspect
+     @u_result = ( @count *  100 ) / @no_of_question 
+     #raise @u_result.inspect
 
-@uid = user_params[:userchoice_id]
-#raise @uid.inspect
-uid = User.find(@uid)
+      @uid = user_params[:userchoice_id]
+      #raise @uid.inspect
+      uid = User.find(@uid)
 
-#uid.save
-    @u_result = ( @count *  100 ) / @no_of_question
-#u_examid = uid.exam_id
-u_percent =uid.percent
-u_percent = @u_result
-uid.percent = u_percent
+      #uid.save
+      @u_result = ( @count *  100 ) / @no_of_question
+      #u_examid = uid.exam_id
+      u_percent =uid.percent
+      u_percent = @u_result
+      uid.percent = u_percent
 
- #raise uid.percent.inspect
+       #raise uid.percent.inspect
 
-u_correct =uid.no_of_correct_answer
-u_correct = @count
-uid.no_of_correct_answer = u_correct
+      u_correct =uid.no_of_correct_answer
+      u_correct = @count
+      uid.no_of_correct_answer = u_correct
 
 #raise uid.no_of_correct_answer.inspect
 # uid.exam_id = @u_examid 
  uid.save
+
 
   redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}"
 
@@ -96,3 +103,5 @@ params.require(:result).permit!
 end
 
 end
+
+
