@@ -1,12 +1,15 @@
+
 <div class="row">
 <div class="span3 scroller  affix"  style="padding: 4px 4px 4px 4px;">
 <% if @paper.timing!=0 %><div id="time" class="bg"></div><%end%>
 <br>
 </div>
 </div>
+
 <%= form_for Result.new do |f| %> 
 
-    <div class="inputs"> 
+  <div class="inputs"> 
+
         <% @questions.each do |question| %> 
          <%= f.hidden_field :userchoice_id, :value => session[:id] %>
          <%= f.hidden_field :exam_id, :value => session[:exam_id] %><br>
@@ -15,17 +18,17 @@
           <%= radio_button_tag("result[question_id][#{question.id}]", answer.id )  %>
           <%= answer.content %><br>
         <% end %> 
+
     </div> 
   <% end %>
 
 
    <div class="form-actions">
         <%= f.submit "Submit", :class => 'btn btn-primary' %>
-      </div>
+  </div>
 
 <% end %>
 <div style='display:none' id="timeup"><% if @time==0 %>0<%else%>1<%end%></div>
-
 
 
 <!-- 

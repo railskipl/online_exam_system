@@ -1,6 +1,19 @@
 class UsersController < ApplicationController
 
 helper_method :pretty_date_time
+before_filter :authenticate, :except => [:new, :create , :update , :destroy , :papers , :instruction]
+
+def authenticate
+ if adminsection_signed_in? 
+    
+    else
+    	redirect_to root_path
+ end
+end
+
+def index
+	@users = User.order(:firstname).paginate(:page => params[:page] ,:per_page => 5)
+end
 
 def new
 	@user = User.new
@@ -34,9 +47,6 @@ def update
         format.html { render :edit }
       end
     end
-
-
-	
 end
 
 def papers
@@ -67,9 +77,20 @@ def instruction
     @candidate=User.find(session[:id])
 end
 
+
 def show
-  
+  @user = User.find(params[:id])
 end
+
+ def destroy
+ 	@user = User.find(params[:id])
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_path, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
 
 
 def result

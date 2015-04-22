@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420070602) do
+ActiveRecord::Schema.define(version: 20150422074637) do
 
   create_table "adminsections", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -63,17 +63,13 @@ ActiveRecord::Schema.define(version: 20150420070602) do
     t.integer  "exam_id"
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "userchoices", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "exam_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,9 +79,11 @@ ActiveRecord::Schema.define(version: 20150420070602) do
     t.date     "dob"
     t.decimal  "contact"
     t.string   "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "exam_id"
+    t.integer  "no_of_correct_answer"
+    t.integer  "percent"
   end
 
 end
