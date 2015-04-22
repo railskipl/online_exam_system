@@ -1,58 +1,58 @@
 <%= form_for @user, :html => { :class => "form-horizontal user" } do |f| %>
-
-    <div>
-        <%= f.label :firstname%>
-      <div>
-          <%= f.text_field :firstname%>
+<div class="row">
+    <div class="span4">
+      <br/><legend><i>Your Details</i></legend>
+      <div class="control-group">
+        <%= f.label :firstname, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :firstname, :class => 'text_field',:pattern=>"[A-Za-z\. ]{3}[A-Za-z\. ]*", :title=>"Must be more than 3 characters!",:required=>"required",:placeholder=>"Your FirstName" %>
+        </div>
       </div>
-  
-    </div>
 
+        <div class="control-group">
+        <%= f.label :lastname, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :lastname, :class => 'text_field',:pattern=>"[A-Za-z\. ]{3}[A-Za-z\. ]*", :title=>"Must be more than 3 characters!",:required=>"required",:placeholder=>"Your Name" %>
+        </div>
+      </div>
 
-    <div>
-      <%= f.label :lastname%>
-      <div >
-        <%= f.text_field :lastname%>
+      <div class="control-group">
+        <%= f.label :email, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :email, :class => 'text_field',:required=>"required",:placeholder=>"Email Id"  %>
+        </div>
+     </div>
+
+       <div class="control-group">
+        <%= f.label :dob, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :dob, :class => 'text_field' , :autocomplete=>"off",:readonly => true%>
+        </div>
+      </div>
+           <div class="control-group">
+        <%= f.label :contact, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :contact, :class => 'text_field',:required=>"required",:placeholder=>"Contact No" %>
+        </div>
+      </div>
+
+            <div class="control-group">
+        <%= f.label :address, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_area :address, :class => 'text_area',:required=>"required",:placeholder=>"Address" %>
+        </div>
+      </div>
+ <div class="control-group">
+  <%= f.label :exam_id, :class => 'control-label' %>
+ <div class="controls">
+ <%= f.select(:exam_id, Exam.all.collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' }) %> 
+ </div>
+ </div>
+      <hr />
+    <div class="form-actions">
+        <%= f.submit "Submit", :class => 'btn btn-primary' %>
       </div>
     </div>
-
-
-
-    <div>
-      <%= f.label :email%>
-      <div>
-        <%= f.text_field :email%>
-      </div>
-    </div>
-
-    <div >
-      <%= f.label :dob%>
-      <div>
-        <%= f.text_field :dob, :autocomplete=>"off",:readonly => true%>
-      </div>
-    </div>
-
-    <div>
-      <%= f.label :contact%>
-      <div>
-        <%= f.text_field :contact%>
-    </div>
-    </div>
-    
-    <div>
-      <%= f.label :address%>
-      <div>
-        <%= f.text_area :address%>
-      </div>
-    </div> <br />
-
-    <div>
-        <%= f.select(:exam_id, Exam.all.collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' }) %> 
-    </div><br />
-
-     <div>  
-    <%= f.submit nil%>
-    </div>
-
-
+</div>
+</fieldset>
 <% end %>

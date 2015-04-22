@@ -11,9 +11,7 @@ def create
 
 	if @user.save
 		@session_user_id = @user.id
-		#raise @session_user_id.inspect
 		session[:id] = @session_user_id
-		#raise session[:id].inspect
 		@current = @user.exam_id
 		session[:exam_id] = @current
 		redirect_to instruction_path
@@ -22,10 +20,30 @@ def create
 	end	
 end
 
+def edit 
+	
+	@user = User.find(params[:id])
+
+end
+def update 
+	@user = User.find(params[:id])
+	respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to instruction_path, notice: 'Your Details was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+
+
+	
+end
+
 def papers
 
 		@paper = Exam.find(session[:exam_id]) rescue nil
-		#@paper.starttime = nil
+    @questions = @paper.questions.paginate(:page => params[:page] ,:per_page => 2)
+    #raise @paper.inspect
 	  		if @paper.starttime.nil?
         		@paper.starttime=Time.zone.now
         		@paper.save
@@ -45,7 +63,8 @@ def papers
 end
 
 def instruction 
-   
+    @test=Exam.find(session[:exam_id])
+    @candidate=User.find(session[:id])
 end
 
 def show

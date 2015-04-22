@@ -1,5 +1,31 @@
+<!-- Added javascript  for back button-->
+
+		<script>
+
+			  jQuery(document).ready(function($) {
+
+		  		if (window.history && window.history.pushState) {
+
+		    	window.history.pushState('forward', null, './#forward');
+
+		    	$(window).on('popstate', function() {
+		    	history.forward();
+	
+		    	});
+
+		  }
+		});
+		</script>
+
+<center><div class="span5 offset3">
+  <div class="page-header">
+    <h3>Test Complete!</h3>
+</div>
 <h1>Thank you!!! </h1><center>
 <%#= params %><fieldset>
 <h3><b>Your Have Scored : <%= params[:@count] %></h3>
 <h3>Marks In Percentile : <%= params[:@u_result] %>%<h3>
-	</fieldset>	</center>
+</fieldset>	</center>
+
+
+

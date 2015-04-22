@@ -10,10 +10,7 @@ class ExamsController < ApplicationController
   # GET /exams/1
   # GET /exams/1.json
   def show
-
-
-      @questions = @exam.questions.paginate(:page => params[:page] ,:per_page => 2)
-
+   @questions = @exam.questions.paginate(:page => params[:page] ,:per_page => 2)
   end
 
 #  @answer = @question.answers.new(question_params[:answers_attributes]["#{i}"])
