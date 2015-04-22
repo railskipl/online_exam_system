@@ -1,21 +1,16 @@
 class UserchoicesController < ApplicationController
 
- def new
-   #@user = Result.new
- end
 
 
 def finish 
 @paper = Exam.find(session[:exam_id]) rescue nil
 @paper.starttime = nil
 @paper.save
-#raise @paper.inspect
 session[:exam_id] = nil
 session[:id] = nil
 end
 
 def score 
-  
   count = 0
   #raise user_params["question_id"].inspect
   question_id = user_params["question_id"]
@@ -106,6 +101,7 @@ def user_params
 params.require(:result).permit!
 
 end
+
 end
 
 

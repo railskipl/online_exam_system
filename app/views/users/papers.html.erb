@@ -1,83 +1,64 @@
-<% if @paper.timing!=0 %>
-  <script>
-  $(document).ready(function(){
-  var now=new Date();
-  if($('#timeup').html()==0){
-    stopTest();
-  }
-  now.setMinutes(now.getMinutes()+<%=@min%>);
-  now.setSeconds(now.getSeconds()-<%=@sec%>);
- $('#time').countdown({until:now, format: 'MS',onExpiry:stopTest});
-
-  });
-
-  function stopTest(){
-    $('#time').html('<center><h4>Time\'s up!</h4></center>');
-    $('#timeup').html('0');
-    // $('input.radio').attr("onclick","return false;");
-    $("#new_result").submit();
-
-  }
 
 
-  </script>
-<%end%>
-
-
-
-<div>
+<div class="row">
+<div class="span3 scroller  affix"  style="padding: 4px 4px 4px 4px;">
 <% if @paper.timing!=0 %><div id="time" class="bg"></div><%end%>
 <br>
-
-
+</div>
+</div>
 
 
 <%= form_for Result.new do |f| %> 
 
-
-
   <div class="inputs"> 
 
-   <%# raise @paper.inspect %><ol>
-         <% @paper.questions.each do |question| %> 
+        <% @questions.each do |question| %> 
          <%= f.hidden_field :userchoice_id, :value => session[:id] %>
-
-         <%#= f.hidden_field :exm_id, :value => session[:exam_id] %> 
-
-         <%#= raise session[:exam_id].inspect %>
-         <%= f.hidden_field :exam_id, :value => session[:exam_id] %>
-
-        <%# for question in @paper.questions %>
-    <%#= question_form.input :category, :collection => 
-get_categories, :include_blank => false %> 
-        <%#= f.hidden_field "question_id_#{question.id}", :value => question.id  %>
-
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3><li><%= question.content %></li></h3><br>
-        <ul>
+         <%= f.hidden_field :exam_id, :value => session[:exam_id] %><br>
+        <h3><%= question.content %></h3><br>
         <% for answer in question.answers %>
-          <%#=  :answer do |choice_form| %> 
-          <%#= choice_form :content %> 
-          <%#= radio_button_tag("question[answers_attributes][][correct]", 
-"false") %> 
-        
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><%= radio_button_tag("result[question_id][#{question.id}]", answer.id)%><%= answer.content %></li><br>
-        <% end %></ul>
+          <%= radio_button_tag("result[question_id][#{question.id}]", answer.id )  %>
+          <%= answer.content %><br>
+        <% end %> 
 
-  
-  </div> 
-<% end %>
-</ul>
-</ol>
+    </div> 
+  <% end %>
 
-  <div class="actions"> 
 
-   <br> <%= f.button :submit %>
-<!-- <button data-disable-with="Please wait..." name="button" type="submit">Checkout</button> -->
-   
-  </div> 
+   <div class="form-actions">
+        <%= f.submit "Submit", :class => 'btn btn-primary' %>
+  </div>
+
+
 <% end %>
 
 <div style='display:none' id="timeup"><% if @time==0 %>0<%else%>1<%end%></div>
 
+
   
 
+
+<!-- 
+Added Timer Javascript in Test
+ -->
+<% if @paper.timing!=0 %>
+        <script>
+        $(document).ready(function(){
+        var now=new Date();
+        if($('#timeup').html()==0){
+          stopTest();
+        }
+        now.setMinutes(now.getMinutes()+<%=@min%>);
+        now.setSeconds(now.getSeconds()-<%=@sec%>);
+       $('#time').countdown({until:now, format: 'MS',onExpiry:stopTest});
+
+        });
+
+        function stopTest(){
+          $('#time').html('<center><h4>Time\'s up!</h4></center>');
+          $('#timeup').html('0');
+          // $('input.radio').attr("onclick","return false;");
+          $("#new_result").submit();
+        }
+        </script>
+<%end%>
