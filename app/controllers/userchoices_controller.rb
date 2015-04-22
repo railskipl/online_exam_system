@@ -1,40 +1,8 @@
 class UserchoicesController < ApplicationController
 
-
-
-
  def new
    #@user = Result.new
  end
-
-
-def create
-
-
-   # @user_choices = Userchoice.new(choice_params)
-   # raise @user_choices.inspect
-   # @user_choices.save
-
-
-raise params.inspect
-
-#    @user = params :results.values.collect { |result| Result.new(result) } 
-#    if @results.all?(&:valid?) 
-#     @results.each(&:save!)
-#        redirect_to :action => ‘index’  
-     
-#      else render :action => ‘new’
-# end 
-
-
-    @user = Result.new(userresult_params)
-       raise userresult_params.inspect
-  if @user.save
-    redirect_to users_path
-  else
-    render 'new'
-  end 
-end
 
 def finish 
 @paper = Exam.find(session[:exam_id]) rescue nil
@@ -43,9 +11,7 @@ def finish
 #raise @paper.inspect
 session[:exam_id] = nil
 session[:id] = nil
-
 end
-
 
 def score 
   
@@ -87,22 +53,36 @@ def score
               
             @count =  count
             #raise @count.inspect
-           
-        end
-        
+        end        
       end
-
-      
-
      r.save
   end
 
+@uid = user_params[:userchoice_id]
+#raise @uid.inspect
+uid = User.find(@uid)
 
-    @u_result = ( @count *  100 ) / @no_of_question 
-             
+#uid.save
+    @u_result = ( @count *  100 ) / @no_of_question
+#u_examid = uid.exam_id
+u_percent =uid.percent
+u_percent = @u_result
+uid.percent = u_percent
+
+ #raise uid.percent.inspect
+
+u_correct =uid.no_of_correct_answer
+u_correct = @count
+uid.no_of_correct_answer = u_correct
+
+#raise uid.no_of_correct_answer.inspect
+# uid.exam_id = @u_examid 
+ uid.save
+
   redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}"
 
-   end 
+   end
+
   
 end
 
@@ -115,10 +95,4 @@ params.require(:result).permit!
 
 end
 
-
-def userresult_params
-  params.require(:result).permit(:id, :question_id, :answer_id, :userchoice_id)
-end
-
- 
 end

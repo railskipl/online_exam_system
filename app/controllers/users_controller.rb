@@ -2,6 +2,12 @@ class UsersController < ApplicationController
 
 helper_method :pretty_date_time
 
+
+def index
+
+	@users = User.order(:firstname).paginate(:page => params[:page] ,:per_page => 5)
+end
+
 def new
 	@user = User.new
 	#@user_result = Result.new
@@ -31,7 +37,7 @@ end
 
 def papers
 	@paper = Exam.find(session[:exam_id]) rescue nil
-	@questions = @paper.questions.paginate(:page => params[:page] ,:per_page => 2)
+	@questions = @paper.questions #.paginate(:page => params[:page] ,:per_page => 2)
 	#raise @paper.inspect
 	#@paper.starttime = nil
 		@paper.starttime = nil
@@ -64,13 +70,21 @@ def papers
     
  		end
 
-
 end
-
 
 def show
-  
+  @user = User.find(params[:id])
 end
+
+ def destroy
+ 	@user = User.find(params[:id])
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_path, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
 
 
 def result
