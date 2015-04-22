@@ -9,42 +9,30 @@
   now.setSeconds(now.getSeconds()-<%=@sec%>);
  $('#time').countdown({until:now, format: 'MS',onExpiry:stopTest});
 
-
   });
 
   function stopTest(){
     $('#time').html('<center><h4>Time\'s up!</h4></center>');
     $('#timeup').html('0');
+    // $('input.radio').attr("onclick","return false;");
     $("#new_result").submit();
 
   }
+
+
   </script>
 <%end%>
 
-    <script type="text/javascript">
-        function xSubmit (frm) {
-          frm.submit();
-          alert("The request has been submitted.");
-          window.close();
-          return false;
-        }
-    </script>
-    
+
 
 <div>
 <% if @paper.timing!=0 %><div id="time" class="bg"></div><%end%>
 <br>
 
-
-
 <%= form_for Result.new do |f| %> 
-  <%#= question_form.error_notification %> 
-  <%#= f.fields_for :questions do |builder| %>
-  <%#= builder.text_field :question %>
-    <%#= render "question_fields", :f => builder %>
-  <%# end %>
 
   <div class="inputs"> 
+
    <%# raise @paper.inspect %><ol>
          <% @paper.questions.each do |question| %> 
          <%= f.hidden_field :userchoice_id, :value => session[:id] %>
@@ -69,18 +57,22 @@ get_categories, :include_blank => false %>
         
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><%= radio_button_tag("result[question_id][#{question.id}]", answer.id)%><%= answer.content %></li><br>
         <% end %></ul>
+
+  
   </div> 
 <% end %>
 </ul>
 </ol>
 
   <div class="actions"> 
-   <br> <%= f.button :submit %>
-  
+
+   <br> <%#= f.button :submit %>
+<button data-disable-with="Please wait..." name="button" type="submit">Checkout</button>
+   
   </div> 
 <% end %>
 
 <div style='display:none' id="timeup"><% if @time==0 %>0<%else%>1<%end%></div>
 
-
+<%= will_paginate @questions %>
 

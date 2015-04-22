@@ -4,45 +4,20 @@ class UserchoicesController < ApplicationController
 
 
  def new
- 	 #@user = Result.new
+   #@user = Result.new
  end
 
 
-def create
 
+def finish 
+@paper = Exam.find(session[:exam_id]) rescue nil
+@paper.starttime = nil
+@paper.save
+#raise @paper.inspect
+session[:exam_id] = nil
+session[:id] = nil
 
-	 # @user_choices = Userchoice.new(choice_params)
-	 # raise @user_choices.inspect
-	 # @user_choices.save
-
-
-raise params.inspect
-
-#    @user = params :results.values.collect { |result| Result.new(result) } 
-# 	 if @results.all?(&:valid?) 
-# 		@results.each(&:save!)
-#        redirect_to :action => ‘index’  
-     
-#      else render :action => ‘new’
-# end 
-
-
-    @user = Result.new(userresult_params)
-       raise userresult_params.inspect
-	if @user.save
-		redirect_to users_path
-	else
-		render 'new'
-	end	
 end
-
- def finish  
-  end
-
-
-
-
-
 
 
 def score 
@@ -50,6 +25,7 @@ def score
   count = 0
   #raise user_params["question_id"].inspect
   question_id = user_params["question_id"]
+
   
   if question_id.nil?
        @count = 0
@@ -58,16 +34,13 @@ def score
        redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}"
 
    else
-     user_params["question_id"].each do |i|
-     r = Result.new(user_params)
-     r.question_id = i[0]
-      
-     r.answer_id = i[1]
-
+      user_params["question_id"].each do |i|
+      r = Result.new(user_params)
+      r.question_id = i[0]
+      r.answer_id = i[1]
       #raise r.question_id.inspect
       #raise r.answer_id.inspect 
       #raise r.userchoice_id.inspect
-    
      usr = User.find(r.userchoice_id)
      exm = usr.exam_id
      ans = Question.find(r.question_id)  
@@ -97,26 +70,20 @@ def score
         end
         
       end
-
-      
-
+ 
      r.save
   end
+     #raise @count.inspect
+     @u_result = ( @count *  100 ) / @no_of_question 
+     #raise @u_result.inspect
 
 
-    @u_result = ( @count *  100 ) / @no_of_question 
-             #raise u_result.inspect
-
-#return @count
-#raise @count.inspect
+   
+             
   redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}"
 
-
-    # @user = Result.new(user_params)
-    
-    # @user.save
    end 
-	
+  
 end
 
 
@@ -124,20 +91,11 @@ private
 
 def user_params
 
-#params.require(:result).permit(:id , :question_id , :answer_id , :userchoice_id )
-
-
 params.require(:result).permit!
 
 end
 
 
-def userresult_params
-  params.require(:result).permit(:id, :question_id, :answer_id, :userchoice_id)
-end
 
  
 end
-
-
-
