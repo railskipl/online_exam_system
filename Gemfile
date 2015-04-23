@@ -9,7 +9,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'execjs'
 gem 'therubyracer'
 gem 'devise'
-gem 'sqlite3'
+#gem 'sqlite3'
 gem 'will_paginate', '~> 3.0.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
