@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 helper_method :pretty_date_time
-before_filter :authenticate, :except => [:new, :create , :update , :destroy , :papers , :instruction]
+before_filter :authenticate, :except => [:new, :edit , :create , :update , :destroy , :papers , :instruction]
 
 def authenticate
  if adminsection_signed_in? 
@@ -38,6 +38,7 @@ def edit
 	@user = User.find(params[:id])
 
 end
+
 def update 
 	@user = User.find(params[:id])
 	respond_to do |format|

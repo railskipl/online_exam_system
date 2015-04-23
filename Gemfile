@@ -9,6 +9,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'execjs'
 gem 'therubyracer'
 gem 'devise'
+gem 'sqlite3'
 gem 'will_paginate', '~> 3.0.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -48,9 +49,5 @@ group :development, :test do
   gem 'spring'
 end
 
-group :production do
-  gem 'pg',             '0.17.1'
-  gem 'rails_12factor', '0.0.2'
 
-end
 

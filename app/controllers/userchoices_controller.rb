@@ -1,7 +1,5 @@
 class UserchoicesController < ApplicationController
 
-
-
 def finish 
 @paper = Exam.find(session[:exam_id]) rescue nil
 @paper.starttime = nil
