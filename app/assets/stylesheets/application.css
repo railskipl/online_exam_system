@@ -31,12 +31,13 @@ Now that the files have been added to your project. We need to tell the applicat
 
 Edit app/assets/stylesheets/application.css and add *= require bootstrap.min along with some @font-face overrides which change the path to the glyphicons. We’ll do that here to avoid changing the bootstrap files.
 
- *= require bootstrap.min
+
+ *= require_self
+  *= require bootstrap.min
  *= require bootstrap
 *= require sidenav
 *= require jquery.countdown
 *= require tinyscroll
- *= require_self
  *= require_tree .
  */
 
