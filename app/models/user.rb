@@ -1,13 +1,9 @@
 class User < ActiveRecord::Base
 
 belongs_to :exam
-
-
-
-
-  validates :firstname, :lastname,
+validates :firstname, :lastname,
               presence: true,
- length: { maximum: 50  ,:message => " must be 6 to 12 characters"}
+ length: { maximum: 50  ,:message => " must be 6 to 12 characters"},
                  
              format: {
                with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ ,
