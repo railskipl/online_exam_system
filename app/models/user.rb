@@ -8,10 +8,9 @@ class User < ActiveRecord::Base
 
 #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-#  validates :firstname, :lastname,
-#              presence: true,
-
-# #              #validates_length_of :user_name, :in => 6..12 , :message => " must be 6 to 12 characters"
+  validates :firstname, :lastname,
+              presence: true,
+ length: { maximum: 50  ,:message => " must be 6 to 12 characters"}
 # #              length: { maximum: 12 }
 # #             #:length => { :maximum => 12 }
 # #             #uniqueness: true,
