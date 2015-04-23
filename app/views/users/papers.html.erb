@@ -1,12 +1,15 @@
-<header>
+<div>
 <h3><% if @paper.timing!=0 %><div id="time" class="bg"></div><%end%></h3>
 <br>
-</header>
+
 
 <%= form_for Result.new do |f| %> 
 
   <div class="inputs"> 
-
+<div>
+  <div>
+    <div>
+      <div>
         <% @questions.each_with_index do |question , i | %> 
          <%= f.hidden_field :userchoice_id, :value => session[:id] %>
          <%= f.hidden_field :exam_id, :value => session[:exam_id] %><br>
