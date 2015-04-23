@@ -1,20 +1,11 @@
 class User < ActiveRecord::Base
 
-   # validates_format_of :firstname, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/  
+belongs_to :exam
 
-    #validates_format_of :lastname, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/
-    
- belongs_to :exam
-
-#VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
-  validates :firstname, :lastname,
+ validates :firstname, :lastname,
               presence: true,
+              length: { maximum: 5, :message => " must be less than 5 characters"} ,
 
-              validates_length_of :user_name, :in => 3..50 , :message => " must be 6 to 12 characters"
-# #              length: { maximum: 12 }
-# #             #:length => { :maximum => 12 }
-# #             #uniqueness: true,
              format: {
                with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ ,
                message: "must be formatted correctly"
@@ -28,10 +19,7 @@ class User < ActiveRecord::Base
             uniqueness: true 
 
   validates :contact , numericality: true
-
-
-
-  validates :exam_id , :presence => {:message => "Select any exam before submitting" }
+ validates :exam_id , :presence => {:message => "Select any exam before submitting" }
 
  
 
