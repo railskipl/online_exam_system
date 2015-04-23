@@ -1,7 +1,5 @@
 class UserchoicesController < ApplicationController
 
-
-
 def finish 
 @paper = Exam.find(session[:exam_id]) rescue nil
 @paper.starttime = nil
@@ -45,14 +43,11 @@ def score
         if ss.correct_answer?
            cor_id = ss.id 
            if r.answer_id == cor_id
-              
               count = count + 1 
               #raise count.inspect
             else
-              count = count 
-                 
-            end
-              
+              count = count      
+            end  
             @count =  count
             #raise @count.inspect
         end        
@@ -60,9 +55,9 @@ def score
 
      r.save
   end
-     #raise @count.inspect
-     @u_result = ( @count *  100 ) / @no_of_question 
-     #raise @u_result.inspect
+       #raise @count.inspect
+       @u_result = ( @count *  100 ) / @no_of_question 
+       #raise @u_result.inspect
 
       @uid = user_params[:userchoice_id]
       #raise @uid.inspect
@@ -81,12 +76,17 @@ def score
       u_correct = @count
       uid.no_of_correct_answer = u_correct
 
-#raise uid.no_of_correct_answer.inspect
-# uid.exam_id = @u_examid 
- uid.save
+      #raise uid.no_of_correct_answer.inspect
+      # uid.exam_id = @u_examid 
+
+      u_tot_que =uid.no_of_questions
+      u_tot_que = @no_of_question
+      uid.no_of_questions = u_tot_que
+
+      uid.save
 
 
-  redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}"
+  redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}&@no_of_question=#{@no_of_question}"
 
    end
 
