@@ -1,15 +1,19 @@
 <div>
 
-<header>
 
 <h3><% if @paper.timing!=0 %><div id="time" class="bg"></div><%end%></h3>
 <br>
-</header>
+
 
 
 <%= form_for Result.new do |f| %> 
 
   <div class="inputs"> 
+<div>
+  <div>
+    <div>
+
+      <div>
 
         <% @questions.each_with_index do |question , i | %> 
          <%= f.hidden_field :userchoice_id, :value => session[:id] %>
@@ -20,10 +24,8 @@
           <%= answer.content %><br>
         <% end %> 
 
-
-    </div> 
   <% end %>
-
+</div>
 
    <div class="form-actions">
 
@@ -33,11 +35,13 @@
 
 
 <% end %>
+</div>
+</div>
 
+    </div> 
 <div style='display:none' id="timeup"><% if @time==0 %>0<%else%>1<%end%></div>
 
 
-  
 <!-- Added javascript  for back button-->
 
     <script>

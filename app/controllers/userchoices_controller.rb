@@ -33,7 +33,7 @@ def score
      ans = Question.find(r.question_id)  
      que = Exam.find(exm)
 
-      no_of_question = que.questions.count
+    no_of_question = que.questions.count
 
      @no_of_question = no_of_question
      #raise no_of_question.inspect
