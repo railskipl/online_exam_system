@@ -8,7 +8,7 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( jquery.countdown.min.js )
 Rails.application.config.assets.precompile += %w( jquery.timer.js )
 Rails.application.config.assets.precompile += %w( jquery.tinyscrollbar.min.js )
-Rails.application.config.assets.precompile += %w( bootstrap_confirm.js )
+Rails.application.config.assets.precompile += %w( bootstrap_confirm.js jquery-ui.css)
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
