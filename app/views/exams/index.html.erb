@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 
-<%= render 'layouts/adminsection' %>
+
 <h1>Listing Exams</h1>  <!-- || <%#= link_to 'Userdetail' , user_path(@user) %> 
  -->
 
@@ -17,9 +17,9 @@
     <% @exams.each do |exam| %>
       <tr>
         <td><%= exam.name %></td>
-        <td><%= link_to 'Show', exam %></td> |
-        <td><%= link_to 'Edit', edit_exam_path(exam) %></td> |
-        <td><%= link_to 'Destroy', exam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Show', exam %> | </td> 
+        <td>&nbsp;<%= link_to 'Edit', edit_exam_path(exam) %> | </td> 
+        <td>&nbsp;<%= link_to 'Destroy', exam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
