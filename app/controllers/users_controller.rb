@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
 helper_method :pretty_date_time
+
 before_filter :authenticate, :except => [:new, :edit , :create , :update , :destroy , :papers , :instruction]
 
 def authenticate
@@ -53,7 +54,7 @@ end
 def papers
 
 		@paper = Exam.find(session[:exam_id]) rescue nil
-    @questions = @paper.questions.paginate(:page => params[:page] ,:per_page => 2)
+    @questions = @paper.questions#.paginate(:page => params[:page] ,:per_page => 2)
     #raise @paper.inspect
 	  		if @paper.starttime.nil?
         		@paper.starttime=Time.zone.now

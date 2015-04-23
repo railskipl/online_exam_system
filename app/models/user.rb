@@ -30,9 +30,9 @@ class User < ActiveRecord::Base
   validates :contact , numericality: true
 
 
+
   validates :exam_id , :presence => {:message => "Select any exam before submitting" }
 
-
-# validates :exam_id, :presence => { :unless => (exam_id = "Please Select a Exam")}
+ 
 
 end
