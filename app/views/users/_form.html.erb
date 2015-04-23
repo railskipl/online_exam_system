@@ -45,7 +45,7 @@
  <div class="control-group">
   <%= f.label :exam_id, :class => 'control-label' %>
  <div class="controls">
- <%= f.select(:exam_id, Exam.all.collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' }) %> 
+ <%= f.select(:exam_id, Exam.all.collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' },:required=>"required",:placeholder=>"Address" ) %> 
  </div>
  </div>
       <hr />
