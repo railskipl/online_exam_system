@@ -15,7 +15,24 @@
 
 		  }
 		});
+
+
 		</script>
+
+ <script>
+      var hook = true;
+      window.onbeforeunload = function() {
+        if (hook) {
+
+          return "admin ko puch"
+
+        }
+      }
+      function unhook() {
+        hook=false;
+      }
+ </script>
+
 
 <center><div class="span5 offset3">
   <div class="page-header">

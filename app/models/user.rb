@@ -18,7 +18,7 @@ validates :firstname, :lastname,
             format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z-]+\.[A-Za-z]+\z/ , message: "Enter a valid Email address !"} ,
             uniqueness: true 
 
-  validates :contact , numericality: true
+ validates :contact , numericality: true 
  validates :exam_id , :presence => {:message => "Select any exam before submitting" }
 
  
