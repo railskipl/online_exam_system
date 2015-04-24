@@ -1,17 +1,19 @@
+<%= render 'layouts/adminsection' %></br></br>
+
 <p id="notice"><%= notice %></p>
-<%= render 'layouts/adminsection' %>
-<p>
-  <strong>Name:</strong>
-  <%= @exam.name %>
-</p>
-<p>
-  <strong>Timing:</strong>
-  <%= @exam.timing %> <i>min</i>
-</p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @exam.name %>
+  </p>
+  <p>
+    <strong>Timing:</strong>
+    <%= @exam.timing %> <i>min</i>
+  </p>
 
  
   <h3>Questions</h3>
-  <table width="100%">
+    <table width="100%">
     <% @questions.each_with_index do |q, i| %>
       <tr>
         <td colspan="2"> <%= i+1 %>. <%= q.content %></td>
@@ -32,6 +34,6 @@
     <% end %>
   </table>
 
-<%= link_to 'Edit', edit_exam_path(@exam) %> |
-<%= link_to 'Back', exams_path %>
-<%= will_paginate @questions %>
+  <%= link_to 'Edit', edit_exam_path(@exam) %> |
+  <%= link_to 'Back', exams_path %>
+  <%= will_paginate @questions %>
