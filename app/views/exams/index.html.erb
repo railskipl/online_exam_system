@@ -13,22 +13,24 @@
     <% @exams.each do |exam| %>
       <tr>
         <td><%= exam.name %></td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Show', exam %> | </td> 
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Show', exam ,:class=>"btn btn-warning"%></td> 
           <% if exam.status? %>
 
-        <td><a href="exams/<%=exam.id%>/close" onclick="if(confirm('Are you sure you want to Close  this exam?'))  return true;  else  return false;" class="button negative" >Close</a> | </td>
+        <td><a href="exams/<%=exam.id%>/close" onclick="if(confirm('Are you sure you want to Close  this exam?'))  return true;  else  return false;" class="btn btn-warning" >Close</a></td>
         <%else%>
-         <td><a href="exams/<%=exam.id%>/close" onclick="if(confirm('Are you sure you want to Open  this exam?'))  return true;  else  return false;" class="button negative" >Open</a> | </td>
-
+         <td><a href="exams/<%=exam.id%>/close" onclick="if(confirm('Are you sure you want to Open  this exam?'))  return true;  else  return false;" class="btn btn-default" >Open</a></td>
         <%end%>
-        <td>&nbsp;<%= link_to 'Edit', edit_exam_path(exam) %> | </td> 
-        <td>&nbsp;<%= link_to 'Destroy', exam, method: :delete, data: { confirm: 'Are you Sure?' } %></td>
+        <td><%= link_to 'Edit', edit_exam_path(exam),:class=>"btn btn-warning" %></td> 
+        <td><%= link_to 'Destroy', exam, method: :delete, data: { confirm: 'Are you Sure?' },:class=>"btn btn-warning" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<br><br><br><br>
 
-<%= link_to 'New Exam', new_exam_path %>
+
 <%= will_paginate @exams %>
+<%= link_to 'New Exam', new_exam_path ,:class=>"btn btn-default"%><br>
+<%= link_to 'Back', index_path ,:class=>"btn btn-warning btn-medium pull-left"%>
