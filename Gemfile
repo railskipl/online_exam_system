@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+#ruby '2.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
@@ -10,7 +10,7 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'devise'
 #gem 'sqlite3'
-
+gem 'will_paginate-bootstrap'
 gem 'sprockets', '~> 3.0'
 
 gem 'will_paginate', '~> 3.0.6'

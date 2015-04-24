@@ -1,10 +1,10 @@
 
   <div class="navbar navbar-fixed-top">
 <h3><% if @paper.timing!=0 %><div id="time" class="bg"></div><%end%></h3>
-
-
 </div>
 <br>
+
+
 
 <%= form_for Result.new do |f| %> 
 <div id="content">
@@ -12,7 +12,6 @@
 <div>
   <div>
     <div>
-
       <div>
 
         <% @questions.each_with_index do |question , i | %> 
