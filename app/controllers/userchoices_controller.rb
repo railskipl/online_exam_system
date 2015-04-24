@@ -12,72 +12,53 @@ def score
   count = 0
   #raise user_params["question_id"].inspect
   question_id = user_params["question_id"]
-
-  
+  exam_id = user_params["exam_id"].to_i
+ 
   if question_id.nil?
        @count = 0
        @u_result = 0
-       
-       redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}"
+       cur_exm_id = Exam.find(exam_id)
+       @no_of_question = cur_exm_id.questions.count    
+       redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}&@no_of_question=#{@no_of_question}"
 
    else
       user_params["question_id"].each do |i|
       r = Result.new(user_params)
       r.question_id = i[0]
       r.answer_id = i[1]
-      #raise r.question_id.inspect
-      #raise r.answer_id.inspect 
-      #raise r.userchoice_id.inspect
-     usr = User.find(r.userchoice_id)
-     exm = usr.exam_id
-     ans = Question.find(r.question_id)  
-     que = Exam.find(exm)
+      usr = User.find(r.userchoice_id)
+      exm = usr.exam_id
+      ans = Question.find(r.question_id)  
+      que = Exam.find(exm)
 
-    no_of_question = que.questions.count
+      no_of_question = que.questions.count
+      @no_of_question = no_of_question
 
-     @no_of_question = no_of_question
-     #raise no_of_question.inspect
       cor_ans = ans.answers.each do |ss|
-        # cor_ans =ans.answers
-        # raise cor_ans.inspect
         if ss.correct_answer?
            cor_id = ss.id 
-           if r.answer_id == cor_id
-              count = count + 1 
-              #raise count.inspect
+             if r.answer_id == cor_id
+                count = count + 1 
             else
-              count = count      
+                count = count      
             end  
             @count =  count
-            #raise @count.inspect
-        end        
+          end        
       end
-
      r.save
   end
-       #raise @count.inspect
-       @u_result = ( @count *  100 ) / @no_of_question 
-       #raise @u_result.inspect
-
+     
+      @u_result = ( @count *  100 ) / @no_of_question 
       @uid = user_params[:userchoice_id]
-      #raise @uid.inspect
       uid = User.find(@uid)
-
-      #uid.save
-      @u_result = ( @count *  100 ) / @no_of_question
-      #u_examid = uid.exam_id
+       
       u_percent =uid.percent
       u_percent = @u_result
       uid.percent = u_percent
 
-       #raise uid.percent.inspect
-
       u_correct =uid.no_of_correct_answer
       u_correct = @count
       uid.no_of_correct_answer = u_correct
-
-      #raise uid.no_of_correct_answer.inspect
-      # uid.exam_id = @u_examid 
 
       u_tot_que =uid.no_of_questions
       u_tot_que = @no_of_question
@@ -85,22 +66,15 @@ def score
 
       uid.save
 
-
-  redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}&@no_of_question=#{@no_of_question}"
+      redirect_to "/finish?@count=#{@count}&@u_result=#{@u_result}&@no_of_question=#{@no_of_question}"
 
    end
-
-  
 end
 
-
-private
-
-def user_params
-
-params.require(:result).permit!
-
-end
+      private
+       def user_params
+          params.require(:result).permit!
+       end
 
 end
 

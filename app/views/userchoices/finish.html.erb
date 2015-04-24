@@ -1,3 +1,20 @@
+
+
+	<center><div class="span5 offset3">
+  		<div class="page-header">
+    		<h3>Test Complete!</h3>
+  		</div>
+	<h1>Thank you!!! </h1></br>
+	<h1>We will get Back to You...</h1>
+	<center>
+		<fieldset>
+   			<h3><b>You Have Scored : <%= params[:@count] %> <b>Out of : <%= params[:@no_of_question] %> </h3>
+			<h3>Marks In Percentage : <%= params[:@u_result] %>%<h3>
+		</fieldset>	
+	</center>
+
+
+
 <!-- Added javascript  for back button-->
 
 		<script>
@@ -16,32 +33,17 @@
 			});
 		</script>
 
- 		<script>
-      			var hook = true;
-      			window.onbeforeunload = function() {
-        		if (hook) {
 
-          		return "admin ko puch"
+ <script>
+      var hook = true;
+      window.onbeforeunload = function() {
+        if (hook) {
 
-        		}
-      		}
-      		function unhook() {
-        	hook=false;
-      		}
- 		</script>
+          return "ad     "
 
-
-	<center><div class="span5 offset3">
-  		<div class="page-header">
-    		<h3>Test Complete!</h3>
-  		</div>
-	<h1>Thank you!!! </h1></br>
-	<h1>We will get Back to You...</h1>
-	<center>
-		<fieldset>
-   			<h3><b>You Have Scored : <%= params[:@count] %> <b>Out of : <%= params[:@no_of_question] %> </h3>
-			<h3>Marks In Percentile : <%= params[:@u_result] %>%<h3>
-		</fieldset>	
-	</center>
-
-
+        }
+      }
+      function unhook() {
+        hook=false;
+      }
+ </script>
