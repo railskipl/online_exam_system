@@ -15,12 +15,14 @@
         <td><%= exam.name %></td>
         <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Show', exam %> | </td> 
           <% if exam.status? %>
+
         <td><a href="exams/<%=exam.id%>/close" onclick="if(confirm('Are you sure you want to Close  this exam?'))  return true;  else  return false;" class="button negative" >Close</a> | </td>
         <%else%>
          <td><a href="exams/<%=exam.id%>/close" onclick="if(confirm('Are you sure you want to Open  this exam?'))  return true;  else  return false;" class="button negative" >Open</a> | </td>
+
         <%end%>
         <td>&nbsp;<%= link_to 'Edit', edit_exam_path(exam) %> | </td> 
-        <td>&nbsp;<%= link_to 'Destroy', exam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>&nbsp;<%= link_to 'Destroy', exam, method: :delete, data: { confirm: 'Are you Sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
