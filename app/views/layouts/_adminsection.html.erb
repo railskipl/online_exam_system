@@ -1,32 +1,23 @@
-
-<div >
-      <div class="navbar-inner">
-        <div class="container">
-          <div class="container nav-collapse">
-
-        			<% if adminsection_signed_in? %>
-  		<p>Welcome <%= current_adminsection.email %> | <%= link_to 'Logged In [click to logout]', destroy_adminsection_session_path, :method => :delete %></p>
-
-
+<div>
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="container nav-collapse">
+        <% if adminsection_signed_in? %>
+  		      <p>Welcome <%= current_adminsection.email %> | <%= link_to 'Logged In [click to logout]', destroy_adminsection_session_path, :method => :delete %></p>
+        <% else %>
+          <p>You are not Logged in. | <%= link_to 'Login', new_adminsection_session_path %></p>
   
-                <% else %>
-                     <p>You are not Logged in. | <%= link_to 'Login', new_adminsection_session_path %></p>
-  
-<% end %>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
+        <% end %>
+     </div><!--/.nav-collapse -->
     </div>
+   </div>
+  </div>
 
-
-     <div class="container">
+<div class="container">
         
-             <%= yield %>
+    <%= yield %>
 
-        </div>
-        <br />
-
-
+</div>
+       
 
 
-    </div> 

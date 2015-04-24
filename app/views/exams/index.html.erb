@@ -1,6 +1,8 @@
 
 <%= render 'layouts/adminsection' %>
+<%= link_to 'New Exam', new_exam_path ,:class=>"btn btn-default"%>
 <h1>Listing Exams</h1>  
+
 <table>
   <thead>
     <tr>
@@ -31,6 +33,6 @@
 <br><br><br><br>
 
 
-<%= will_paginate @exams %>
-<%= link_to 'New Exam', new_exam_path ,:class=>"btn btn-default"%><br>
+<%= will_paginate @exams, renderer: BootstrapPagination::Rails %>
+<br>
 <%= link_to 'Back', index_path ,:class=>"btn btn-warning btn-medium pull-left"%>
