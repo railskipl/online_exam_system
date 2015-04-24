@@ -1,16 +1,43 @@
+<%= render 'layouts/adminsection' %>
 
-<h1> User Detail </h1>
+<br />
 
-  <li><h3>Firstname:  	     <%= @user.firstname %></li>
-  <li><h3>Lastname:  	     <%= @user.lastname %></li>
-  <li><h3>Email:  		     <%= @user.email %></li>
-  <li><h3>Date-of-Birth:     <%= @user.dob %></li>
-  <li><h3>Contact:  	     <%= @user.contact %></li>
-  <li><h3>Address:           <%= @user.address %></li>
-  <li><h3>Exam:              <%= @user.exam_id %></li>
-  <li><h3>Total Questions:   <%= @user.no_of_questions %></li>
-  <li><h3>Correct answer:    <%= @user.no_of_correct_answer %></li>
-  <li><h3>Percentile:        <%= @user.percent %></li>
-
-
-
+<p>
+  <strong>Firstname: </strong>
+  <%= @user.firstname %>
+</p>
+<p>
+  <strong>Lastname:</strong>
+  <%= @user.lastname %> 
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<p>
+  <strong>Date-of-Birth:</strong>
+  <%= @user.dob %> 
+</p><p>
+  <strong>Contact:</strong>
+  <%= @user.contact %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @user.address%> 
+</p>
+<strong>Exam:</strong>
+  <%= @user.exam_id %> 
+</p><p>
+  <strong>Total Questions:</strong>
+  <%= @user.no_of_questions %>
+</p>
+<p>
+  <strong>Correct answer:</strong>
+  <%= @user.no_of_correct_answer %> 
+</p>
+<p>
+  <strong>Percentage:</strong>
+  <%= @user.percent %> 
+</p>
+<%= link_to raw("<i class='icon-chevron-left'></i> back "),users_path,:class=>"btn btn-warning btn-medium pull-left"%>
+<%= link_to 'Destroy',  @user , method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-warning" %>

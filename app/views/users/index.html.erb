@@ -1,13 +1,6 @@
 
-<h1>Listing Users</h1>  
-
-
 <%= render 'layouts/adminsection' %>
 <h1>Listing Users</h1>  
-
-
-
-
 <table>
   <thead>
     <tr>
@@ -20,8 +13,8 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.firstname %></td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Show', user %> | </td> 
-        <td>&nbsp;<%= link_to 'Destroy',  user , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Show', user ,:class=>"btn btn-warning"%></td> 
+        <td>&nbsp;<%= link_to 'Destroy',  user , method: :delete, data: { confirm: 'Are you sure?'} ,:class=>"btn btn-default" %></td>
       </tr>
     <% end %>
   </tbody>

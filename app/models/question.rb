@@ -7,4 +7,5 @@ class Question < ActiveRecord::Base
 		has_many :userchoice
 		has_one :result
 		accepts_nested_attributes_for :userchoice
+		
 end

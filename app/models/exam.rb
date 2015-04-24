@@ -8,6 +8,6 @@ class Exam < ActiveRecord::Base
 	validates :name, :presence => true
     accepts_nested_attributes_for :userchoices
 	accepts_nested_attributes_for :results
-
+ 
 
 end
