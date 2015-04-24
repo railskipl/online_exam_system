@@ -34,6 +34,6 @@
     <% end %>
   </table>
 
-  <%= link_to 'Edit', edit_exam_path(@exam) %> |
-  <%= link_to 'Back', exams_path %>
+  <%= link_to 'Edit', edit_exam_path(@exam),:class=>"btn btn-warning" %> 
+  <%= link_to 'Back', exams_path ,:class=>"btn btn-warning"%>
   <%= will_paginate @questions, renderer: BootstrapPagination::Rails %>
