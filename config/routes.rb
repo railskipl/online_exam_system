@@ -25,6 +25,9 @@
   get '/instruction' => "users#instruction"
   get '/finish'=> "userchoices#finish"
 
+  get "exams/:id/close" => "users#close"
+  #get "admin/users/:id/block" => "users#block"
+
  
 
 

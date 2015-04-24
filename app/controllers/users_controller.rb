@@ -20,6 +20,13 @@ def new
 	@user = User.new
 end
 
+def close 
+  @exam = Exam.find(params[:id])
+  @exam.status = !@exam.status?
+  @exam.save!
+  redirect_to :back
+end
+
 def create
     @user = User.new(user_params)
 

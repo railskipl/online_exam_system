@@ -6,45 +6,42 @@
 
 		  		if (window.history && window.history.pushState) {
 
-		    	window.history.pushState('forward', null, './#forward');
+		    		window.history.pushState('forward', null, './#forward');
 
-		    	$(window).on('popstate', function() {
-		    	history.forward();
+		    		$(window).on('popstate', function() {
+		    		history.forward();
 	
-		    	});
-
-		  }
-		});
-
-
+		    		});
+		  		}
+			});
 		</script>
 
- <script>
-      var hook = true;
-      window.onbeforeunload = function() {
-        if (hook) {
+ 		<script>
+      			var hook = true;
+      			window.onbeforeunload = function() {
+        		if (hook) {
 
-          return "admin ko puch"
+          		return "admin ko puch"
 
-        }
-      }
-      function unhook() {
-        hook=false;
-      }
- </script>
-
-
-<center><div class="span5 offset3">
-  <div class="page-header">
-    <h3>Test Complete!</h3>
-</div>
-<h1>Thank you!!! </h1><center>
-<fieldset>
+        		}
+      		}
+      		function unhook() {
+        	hook=false;
+      		}
+ 		</script>
 
 
-<h3><b>You Have Scored : <%= params[:@count] %> <b>Out of : <%= params[:@no_of_question] %></h3>
-
-<h3>Marks In Percentile : <%= params[:@u_result] %>%<h3>
-</fieldset>	</center>
+	<center><div class="span5 offset3">
+  		<div class="page-header">
+    		<h3>Test Complete!</h3>
+  		</div>
+	<h1>Thank you!!! </h1></br>
+	<h1>We will get Back to You...</h1>
+	<center>
+		<fieldset>
+   			<h3><b>You Have Scored : <%= params[:@count] %> <b>Out of : <%= params[:@no_of_question] %> </h3>
+			<h3>Marks In Percentile : <%= params[:@u_result] %>%<h3>
+		</fieldset>	
+	</center>
 
 
