@@ -9,6 +9,13 @@ class Exam < ActiveRecord::Base
     accepts_nested_attributes_for :userchoices
 	accepts_nested_attributes_for :results
  
+  validate :any_present?
+
+def any_present?
+  if questions.all?{|attr| self[attr].present?}
+    errors.add :base, " Atleast 1 question should be present "
+  end
+end
 
 
 end
