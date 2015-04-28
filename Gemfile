@@ -8,7 +8,9 @@ gem 'rails', '4.2.0'
 gem 'sass-rails', '~> 5.0'
 gem 'execjs'
 gem 'therubyracer'
+
 gem 'devise'
+gem "twitter-bootstrap-rails"
 #gem 'sqlite3'
 gem 'will_paginate-bootstrap'
 gem 'sprockets', '~> 3.0'

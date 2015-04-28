@@ -1,7 +1,7 @@
 <%= form_for @user, :html => { :class => "form-horizontal user" } do |f| %>
 <div class="row">
-    <div class="span4">
-      <br/><legend><i>Your Details</i></legend>
+  <div class="span4">
+      <legend><i>Your Details</i></legend>
       <div class="control-group">
         <%= f.label :firstname, :class => 'control-label' %>
         <div class="controls">
@@ -32,7 +32,7 @@
            <div class="control-group">
         <%= f.label :contact, :class => 'control-label' %>
         <div class="controls">
-          <%= f.text_field :contact, :class => 'text_field',:required=>"required",:placeholder=>"Contact No" , :maxlength => 12 %>
+          <%= f.text_field :contact, :class => 'text_field',:required=>"required",:placeholder=>"Contact No" %>
         </div>
       </div>
 
@@ -48,11 +48,17 @@
  <%= f.select(:exam_id, Exam.all.where(:status => true).collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' },:required=>"required",:placeholder=>"Address" ) %> 
  </div>
  </div>
-      <hr />
+<hr />
+<br />
+<br />
+
     <div class="form-actions">
-        <%= f.submit "Submit", :class => 'btn btn-primary' %>
-      </div>
+      <%= f.submit "Submit", :class => 'btn btn-primary' %>
     </div>
+  </div>
 </div>
-</fieldset>
+
+
 <% end %>
+
+

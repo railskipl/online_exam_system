@@ -1,18 +1,26 @@
-
-
-	<center><div class="span5 offset3">
-  		<div class="page-header">
+<center><div class="span5 offset3">
+<div class="page-header">
     		<h3>Test Complete!</h3>
-  		</div>
-	<h1>Thank you!!! </h1></br>
-	<h1>We will get Back to You...</h1>
-	<center>
-		<fieldset>
-   			<h3><b>You Have Scored : <%= params[:@count] %> <b>Out of : <%= params[:@no_of_question] %> </h3>
-			<h3>Marks In Percentage : <%= params[:@u_result] %>%<h3>
-		</fieldset>	
-	</center>
+  </div>
+	<p>You have successfully completed the first round of the Kunal Infotech Aptitude Test! Results will be announced shortly. <br><br> This Test Application is powered by the awesomeness of <br><strong>Kunal Infotech!</strong><br>
 
+<table class="table table-nonfluid">
+<caption>Results</caption>
+<tr>
+<th>Out Of</th><br/>
+<td><%= params[:@no_of_question] %></td>
+</tr>
+ <tr>
+<th>Score</th>
+<td><%= params[:@count] %></td>
+</tr>
+<tr>
+	<th>Marks In %</th>
+	<td><%= params[:@u_result]%></td>
+</tr>
+</table>
+
+</div></center>
 
 
 <!-- Added javascript  for back button-->

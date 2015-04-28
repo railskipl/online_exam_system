@@ -1,7 +1,9 @@
-<%= render 'layouts/adminsection' %></br></br>
+<%= render 'layouts/adminsection' %></br>
+<div class="span10 offset1">
+<div class="page-header">
 <h1>Listing Users</h1>  </br></br>
-
-<table>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -19,7 +21,5 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
 <%= will_paginate @users, renderer: BootstrapPagination::Rails %><br/>
-<%= link_to 'Back', index_path ,:class=>"btn btn-warning btn-medium pull-left"%>
+<%= link_to 'Back', index_path,:class=>"btn btn-warning" %>
