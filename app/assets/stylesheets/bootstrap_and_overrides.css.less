@@ -27,7 +27,6 @@
 //
 // Example:
 // @link-color: #ff0000;
-
 .wait
   {
     background-image: url('loading.gif');
@@ -41,15 +40,13 @@
 .scroller {
   height:500px;
   overflow:auto;
-
+  position:fixed;
 }
 .btn {
 	background-image: none;
 	.box-shadow(none);
 	border: none;
-	
 	text-shadow: none;
-
 	&.disabled {
 		box-shadow: inset 0 2px 4px rgba(0,0,0,.15),~" "0 1px 2px rgba(0,0,0,.05);
 	}
@@ -126,15 +123,14 @@ blockquote {
 }
 .brand{font-style: italic; font-size: 10px;}
 body {
-	padding-top: 75px;
-  
-  background: image-url("lghtmesh.png");
-  
+	padding-top: 5px;
+  background-image:url('lghtmesh.png');
 	background-repeat: repeat;
 	height: 100%;
+
 	
 }
-.input { color:black; }
+.input { color:blue; }
 
 .bg {
 background-color: #ffffff;
@@ -150,7 +146,17 @@ border-radius: 5px;
 	background-repeat: repeat;
 	-moz-border-radius: 15px;
   border-radius: 15px;
-  padding: 75px;
+  padding: 15px;
+  height: 100%;
+}
+.span11
+{
+ // background-image: url('fabric_plaid.png');
+  background-color: #ffffff;
+	background-repeat: repeat;
+	-moz-border-radius: 15px;
+  border-radius: 15px;
+  padding: 124px;
   height: 100%;
 }
 hr.double-gradient{
@@ -477,7 +483,7 @@ legend {
 
 // Navbar
 // -------------------------
-@navbarCollapseWidth:             979px;
+@navbarCollapseWidth:             700px;
 @navbarCollapseDesktopWidth:      @navbarCollapseWidth + 1;
 
 @navbarHeight:                    50px;

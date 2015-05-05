@@ -11,14 +11,13 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap.min
-//= require bootstrap
-//= require bootstrap_confirm
-//= require jquery.countdown.min
-//= require jquery.tinyscrollbar.min
-//= require jquery.timer
 //= require jquery_ujs
+//= require turbolinks
+//= require tinymce-jquery
 //= require twitter/bootstrap
+//= require bootstrap
+//= require jquery.countdown.min
+//= require jquery.timer
 //= require jquery_nested_form
 //= require_tree .
 

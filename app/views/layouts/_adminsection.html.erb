@@ -3,7 +3,7 @@
     <div class="container">
       <div class="container nav-collapse">
         <% if adminsection_signed_in? %>
-  		    <h6 align = "right">Welcome <%= current_adminsection.email %> | <%= link_to 'Logged In [click to logout]', destroy_adminsection_session_path, :method => :delete , :class => 'btn btn-primary'%></h4>
+            <p>Welcome <%= current_adminsection.email %> | <%= link_to 'Logged In [click to logout]', destroy_adminsection_session_path, :method => :delete %></p>
         <% else %>
           <p>You are not Logged in. | <%= link_to 'Login', new_adminsection_session_path %></p>
   
@@ -14,10 +14,8 @@
   </div>
 
 <div class="container">
-    
+        
     <%= yield %>
 
 </div>
        
-
-

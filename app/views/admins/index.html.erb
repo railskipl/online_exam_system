@@ -1,23 +1,20 @@
-<%= render 'layouts/adminsection' %>
+<%#= render 'layouts/adminsection' %>
 
 
 <div class="span4 offset4">
+<h2>Administrator</h2>
+<hr />
+<br />
+<blockquote><p>List Of Exams
+<%= link_to raw("<i class='icon-chevron-right'></i>Go"),exams_path,:class => 'btn btn-info pull-right'%></p></blockquote>
+<blockquote><p>List Of Users
+<%= link_to raw("<i class='icon-chevron-right'></i>Go"),users_path,:class => 'btn btn-info pull-right'%></p></blockquote>
 
-		<h2>Administrator</h2>
-		<hr /><br />
-
-	<blockquote><p>List Of Exams
-			<%= link_to raw("<i class='icon-chevron-right'></i>Go"),exams_path,:class => 'btn btn-info pull-right'%></p>
-	</blockquote>
-	<blockquote><p>List Of Users
-			<%= link_to raw("<i class='icon-chevron-right'></i>Go"),users_path,:class => 'btn btn-info pull-right'%></p>
-	</blockquote>
-
-
+ <% if adminsection_signed_in? %>
+  		   <center> <%= link_to 'Logged In [click to logout]', destroy_adminsection_session_path, :method => :delete , :class => 'btn btn-danger qn-nav'%></center>
+        <% else %>
+          <p>You are not Logged in. | <%= link_to 'Login', new_adminsection_session_path %></p>
+  
+        <% end %>
 
 </div>
-
-
-
-
-

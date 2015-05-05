@@ -1,4 +1,8 @@
-
+<%#= render 'layouts/adminsection' %>
+<div class="span10 offset1">
+<div class="page-header">
+<h1>User</h1>  </br></br>
+</div>
 
 <p>
   <strong>Firstname: </strong>
@@ -38,4 +42,6 @@
   <%= @user.percent %> 
 </p>
 <%= link_to raw("<i class='icon-chevron-left'></i> Back "),users_path,:class=>"btn btn-warning btn-medium pull-left"%>
+
 <%= link_to 'Destroy',  @user , method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-warning" %>
+</div>

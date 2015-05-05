@@ -1,25 +1,37 @@
 <%= form_for @user, :html => { :class => "form-horizontal user" } do |f| %>
-<div class="row">
-  <div class="span4">
+    <div class="row">
+        <div class="span4">
+          <% if @user.errors.any? %>
+             <div id="error_explanation">
+                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+                       <% end %>
+          </ul>
+            </div>
+        <% end %>
+
+
       <legend><i>Your Details</i></legend>
       <div class="control-group">
         <%= f.label :firstname, :class => 'control-label' %>
         <div class="controls">
-          <%= f.text_field :firstname, :class => 'text_field',:pattern=>"[A-Za-z\. ]{3}[A-Za-z\. ]*", :title=>"Must be more than 3 characters!",:required=>"required",:placeholder=>"Your FirstName" %>
+          <%= f.text_field :firstname, :class => 'text_field'%>
         </div>
       </div>
 
         <div class="control-group">
         <%= f.label :lastname, :class => 'control-label' %>
         <div class="controls">
-          <%= f.text_field :lastname, :class => 'text_field',:pattern=>"[A-Za-z\. ]{3}[A-Za-z\. ]*", :title=>"Must be more than 3 characters!",:required=>"required",:placeholder=>"Your LastName" %>
+          <%= f.text_field :lastname, :class => 'text_field'%>
         </div>
       </div>
 
       <div class="control-group">
         <%= f.label :email, :class => 'control-label' %>
         <div class="controls">
-          <%= f.text_field :email, :class => 'text_field',:required=>"required",:placeholder=>"Email Id"  %>
+          <%= f.text_field :email, :class => 'text_field' %>
         </div>
      </div>
 
@@ -32,33 +44,33 @@
            <div class="control-group">
         <%= f.label :contact, :class => 'control-label' %>
         <div class="controls">
-          <%= f.text_field :contact, :class => 'text_field',:required=>"required",:placeholder=>"Contact No" %>
+          <%= f.text_field :contact, :class => 'text_field',:placeholder=>"Contact No" %>
         </div>
       </div>
 
             <div class="control-group">
         <%= f.label :address, :class => 'control-label' %>
         <div class="controls">
-          <%= f.text_area :address, :class => 'text_area',:required=>"required",:placeholder=>"Address" %>
+          <%= f.text_area :address, :class => 'text_area',:placeholder=>"Address" %>
         </div>
       </div>
- <div class="control-group">
-  <%= f.label :exam_id, :class => 'control-label' %>
- <div class="controls">
- <%= f.select(:exam_id, Exam.all.where(:status => true).collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' },:required=>"required",:placeholder=>"Address" ) %> 
- </div>
- </div>
+    <div class="control-group">
+      <%= f.label :exam_id, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.select(:exam_id, Exam.all.where(:status => true).collect {|p| [p.name, p.id ]}, { :include_blank => 'select test' }, :placeholder=>"Exam_Id" ) %> 
+        </div>
+    </div>
+
+
 <hr />
 <br />
 <br />
 
-    <div class="form-actions">
-      <%= f.submit "Submit", :class => 'btn btn-primary' %>
+      <div class="form-actions">
+        <%= f.submit "Submit", :class => 'btn btn-primary' %>
+      </div>
     </div>
   </div>
-</div>
 
 
 <% end %>
-
-

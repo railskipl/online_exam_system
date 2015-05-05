@@ -1,21 +1,20 @@
 <div class="span10 offset1">
-  <div class="page-header">
-    <h2>Instructions</h2>
-  </div>
-  <h4>Welcome <%= @candidate.firstname %>! Please read carefully before proceeding...</h4><br />
-  <ul>
-    <li>This test contains <strong> Total <%= @total_ques %> Questions.</strong></li>
-    <li>Questions can be answered by selecting the appropriate button (<input type="radio"/>) next to the options.</li>
-    <li>You can scroll to a certain question quickly by clicking on the question's button in the <em>Question Navigation</em> section.</li>
-    <li>Answered questions will be marked in green in both the <em>question number</em> and in the <em>Questions Navigation</em> section.</li>
-    <li>Questions can be marked for review by clicking on the <em>question number</em> near the question and the question will be marked in yellow.<br> Eg: <span class="badge badge-warning"><h5 class="question-no">Q 1</h5></span></li><br>
-    <li><% if @test.timing==0 %>There is <strong>no time limit</strong> and you can submit whenever you want.<%else%>The time limit for the test is <strong><%=@test.timing%> mins.</strong><%end%></li>
-    <li><strong>DO NOT REFRESH THE PAGE OR USE THE BACK BUTTON. YOU WILL LOSE ALL YOUR ANSWERS!</strong></li>
-  </ul>
+    <div class="page-header">
+      <h2>Instructions</h2>
+    </div>
+      <h4>Welcome <%= @candidate.firstname %>! Please read carefully before proceeding...</h4><br />
+     <ul>
+        <li>This test contains <strong> Total <%= @total_ques %> Questions.</strong></li>
+        <li>Questions can be answered by selecting the appropriate button (<input type="radio"/>) next to the options.</li>
+        <li>You can scroll to a certain question quickly by clicking on the question's button in the <em>Question Navigation</em> section.</li>
+        <li>Answered questions will be marked in green in both the <em>question number</em> and in the <em>Questions Navigation</em> section.</li>
+        <li>Questions can be marked for review by clicking on the <em>question number</em> near the question and the question will be marked in yellow.<br> Eg: <span class="badge badge-warning"><h5 class="question-no">Q 1</h5></span></li><br>
+        <li><% if @test.timing==0 %>There is <strong>no time limit</strong> and you can submit whenever you want.<%else%>The time limit for the test is <strong><%=@test.timing%> mins.</strong><%end%></li>
+        <li><strong>DO NOT REFRESH THE PAGE OR USE THE BACK BUTTON. YOU WILL LOSE ALL YOUR ANSWERS!</strong></li>
+    </ul>
 
 
- <div class="form-actions">
-<%= link_to raw("<i class='icon-chevron-left'></i> Edit Details "),edit_user_path(@candidate),:class=>"btn btn-warning btn-medium pull-left"%><%= link_to raw("Proceed to Test <i class='icon-chevron-right'></i>"),papers_path(@paper),:class=>"btn btn-primary btn-medium pull-right" %></div>
+      <div class="form-actions">
+            <%= link_to raw("<i class='icon-chevron-left'></i> Edit Details "),edit_user_path(@candidate),:class=>"btn btn-warning btn-medium pull-left"%><%= link_to raw("Proceed to Test <i class='icon-chevron-right'></i>"),papers_path(@paper),:class=>"btn btn-primary btn-medium pull-right" %>
+      </div>
 </div>
-
-
